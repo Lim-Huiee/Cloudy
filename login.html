@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<script setup>
+    import {Authenticator} from '@aws-amplify/ui-vue';
+</script>
+
+
+<h1>Here is a child component!</h1>
+<authenticator />
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="">
@@ -135,6 +145,8 @@
         </div>
     </div>
 
+
+
     <!-- Start Footer -->
     <footer class="bg-dark" id="tempaltemo_footer">
         <div class="container">
@@ -243,6 +255,13 @@
                 methods: {
                 }
             }).mount("#cart-nav");
+        
+        
+        window.global = window;
+        window.process = {
+        env: { DEBUG: undefined },
+        }
+        var exports = {};
     </script>
 </body>
 </html>

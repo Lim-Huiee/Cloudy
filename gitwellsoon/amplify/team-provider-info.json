@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-gitwellsoon-staging-93600-authRole",
+      "UnauthRoleArn": "arn:aws:iam::319673250931:role/amplify-gitwellsoon-staging-93600-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::319673250931:role/amplify-gitwellsoon-staging-93600-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-gitwellsoon-staging-93600-deployment",
+      "UnauthRoleName": "amplify-gitwellsoon-staging-93600-unauthRole",
+      "StackName": "amplify-gitwellsoon-staging-93600",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:319673250931:stack/amplify-gitwellsoon-staging-93600/bc4f63e0-7707-11ee-99bc-0afc26583b30",
+      "AmplifyAppId": "d3tph6nrkjsek8"
+    },
+    "categories": {
+      "auth": {
+        "gitwellsoon": {}
+      }
+    }
+  }
+}

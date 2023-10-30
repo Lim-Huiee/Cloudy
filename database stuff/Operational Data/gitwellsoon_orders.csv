@@ -1,66 +1,51 @@
-﻿pid,pname,pdesc,pprice,img_src,stock,prod_date,expiry_date,,,,
-1,Johnson & Johnson Skin-Flex Extra Large Band-Aid,"Up to 3x more flexible pad, Moves like a second skin, Stays on even when wet",6,bandage1.jpeg,182,25/2/23,7/3/24,,,,
-2,Johnson & Johnson Flexible Fabric Band-Aid,"Comfortable protection that stretches and flexes as you move, Stays on for up to 24 hours",15,bandage2.jpeg,144,2/2/23,4/3/24,,,,
-3,PhysiciansCare First Aid Bandages,"Non-stick pad, Sterile bandages, 100% Latex free",13,bandage3.jpeg,58,22/3/23,24/6/24,,,,
-4,3M Nexcare Duo Bandages,"Hold strong all day, Pain-free removal, Skin friendly. 20 assorted bandages",16,bandage4.jpeg,240,7/11/23,3/3/24,,,,
-5,American White Cross Plastic Bandages,"Multi-purpose, Durable, Latex Free",19,bandage5.jpeg,320,16/3/23,17/12/24,,,,
-6,Johnson & Johnson Flexible Fabric Band-Aid Twin Package,"Comfortable protection that stretches and flexes as you move, Stays on for up to 24 hours",9,bandage6.jpeg,218,9/11/23,4/3/24,,,,
-7,Curad Variety Pack Antibacterial Bandages,Extreme Hold adhesive technology,5,bandage7.jpeg,299,31/8/23,9/10/24,,,,
-8,3m Nexcare Strong Hold Bandages,"Holds strong up to 24 hours, Proprietary advanced adhesive",8,bandage8.jpeg,15,26/10/23,7/7/24,,,,
-9,American White Cross Pink Bandages,"Breathable, Easy to use",5,bandage9.jpg,121,13/3/23,30/3/24,,,,
-10,Omron Blood Pressure Monitor,The Omron Blood Pressure Monitor is a reliable device for monitoring your blood pressure at home. It provides accurate readings and features a user-friendly design for ease of use.,81,bpm1.jpeg,317,29/6/23,31/10/24,,,,
-11,Little Doctor Blood Pressure Monitor,The Little Doctor Blood Pressure Monitor is a compact and portable solution for tracking your blood pressure. It offers precise measurements and is suitable for both home and travel.,75,bpm2.jpeg,66,27/4/23,5/4/24,,,,
-12,SunTech Blood Pressure Monitor,The SunTech Blood Pressure Monitor is a professional-grade device known for its accuracy. It's ideal for medical practices and healthcare providers.,103,bpm3.jpeg,312,17/8/23,19/9/24,,,,
-13,Omron HEM-RML31 Blood Pressure Monitor,"The Omron HEM-RML31 Blood Pressure Monitor is a high-quality, wrist-mounted device. It's designed for comfort and convenience, making it easy to monitor your blood pressure on the go.",96,bpm4.jpeg,182,23/5/23,17/2/24,,,,
-14,MedCare Blood Pressure Monitor,The MedCare Blood Pressure Monitor is a cost-effective solution for monitoring your blood pressure. It's user-friendly and suitable for home use.,99,bpm5.jpeg,274,2/2/23,12/11/24,,,,
-15,Surgical Face Mask,"Our Surgical Face Mask provides essential protection in various healthcare settings. It's designed for comfort and reliability, making it an excellent choice for medical professionals.",15,facemask1.jpg,28,14/3/23,14/3/24,,,,
-16,AlertCare 3 Ply Face Mask,"The AlertCare 3 Ply Face Mask is a versatile protective mask suitable for everyday use. It's comfortable, breathable, and designed to keep you safe.",7,facemask2.jpeg,74,1/7/23,31/3/24,,,,
-17,Assure Surgical Mask,The Assure Surgical Mask is a high-quality option that offers superior protection. It's widely used in healthcare environments and provides peace of mind.,4,facemask3.jpeg,282,12/2/23,3/7/24,,,,
-18,JoyCare Surgical Face Masks,JoyCare Surgical Face Masks are designed with comfort in mind. They offer reliable protection and are suitable for extended wear.,6,facemask4.jpeg,256,8/6/23,18/11/24,,,,
-19,Mulitple Protection Face Mask,Our Multiple Protection Face Mask is a versatile option with multiple layers of protection. It's designed to safeguard your health in various situations.,8,facemask5.jpeg,98,19/4/23,20/1/24,,,,
-20,Cranberry Cosmo Face Mask,The Cranberry Cosmo Face Mask is known for its stylish design and effective filtration. It combines fashion with protection for modern individuals.,14,facemask6.jpeg,160,3/5/23,25/3/24,,,,
-21,KF94 Face Mask,The KF94 Face Mask is a premium choice for protection against airborne contaminants. It offers a high level of filtration and is widely used in healthcare settings.,7,facemask7.jpeg,93,7/3/23,9/10/24,,,,
-22,American Red Cross First Aid Kit,The American Red Cross First Aid Kit is a comprehensive set of supplies for emergency situations. It includes essential items for first aid and is suitable for homes and workplaces.,82,fak1.jpeg,11,26/8/23,13/2/24,,,,
-23,Hypa First Aid Kit,The Hypa First Aid Kit is a compact and portable solution for basic first aid needs. It's perfect for travelers and outdoor enthusiasts.,107,fak2.jpeg,350,16/1/23,18/4/24,,,,
-24,UWotM8 First Aid Kit,The UWotM8 First Aid Kit is a fun and functional option for first aid essentials. It's perfect for those who appreciate a touch of humor in their preparedness.,111,fak3.jpeg,4,1/7/23,28/11/24,,,,
-25,AA First Aid Kit,The AA First Aid Kit is a reliable choice for keeping essential first aid supplies at your fingertips. It's suitable for everyday emergencies.,71,fak4.jpeg,109,24/6/23,31/1/24,,,,
-26,Swiss Safe First Aid Kit,The Swiss Safe First Aid Kit is a premium and extensive set of first aid supplies. It's designed for families and professionals who need a wide range of medical resources.,62,fak5.jpeg,299,29/10/23,23/5/24,,,,
-27,Blue Nitrile Examination Gloves,Our Blue Nitrile Examination Gloves are latex-free and provide exceptional protection. They are suitable for medical examinations and other hygiene-sensitive tasks.,12,glove1.jpg,313,31/10/23,13/7/24,,,,
-28,Price Medical Examination Latex Gloves,Price Medical Examination Latex Gloves are a cost-effective solution for medical professionals. They offer dependable performance and comfort during examinations.,12,glove2.jpg,162,15/9/23,15/8/24,,,,
-29,Assure Medical Gloves,Assure Medical Gloves are designed for medical practitioners who require reliable protection and tactile sensitivity. They are suitable for various healthcare applications.,14,glove3.jpeg,60,3/7/23,7/7/24,,,,
-30,Vitality Medical Gloves,Vitality Medical Gloves are an excellent choice for those who need high-quality gloves for healthcare procedures. They offer precision and comfort for medical professionals.,13,glove4.jpeg,68,18/8/23,25/3/24,,,,
-31,MedPride Medical Gloves,MedPride Medical Gloves are known for their durability and versatility. They are suitable for a wide range of medical procedures and provide a comfortable fit.,17,glove5.jpeg,187,21/8/23,19/5/24,,,,
-32,Biore GUARD Hand Sanitizer Spray,"Biore GUARD Hand Sanitizer Spray is a convenient solution for hand hygiene. It offers quick and effective disinfection, making it perfect for on-the-go use.",12,hs1.jpeg,19,14/11/23,8/12/24,,,,
-33,Softalind Hand Sanitizer,Softalind Hand Sanitizer is a high-quality sanitizer known for its gentle care and effectiveness. It provides protection while being gentle on your skin.,6,hs2.jpeg,223,8/4/23,7/9/24,,,,
-34,Lifebuoy Hand Sanitizer,Lifebuoy Hand Sanitizer is a trusted brand for hand hygiene. It offers a range of sanitizers that help keep your hands clean and germ-free.,11,hs3.jpeg,281,1/9/23,13/2/24,,,,
-35,MaxShield Hand Sanitizer Gel,MaxShield Hand Sanitizer Gel provides advanced protection against germs. It's a gel-based sanitizer that offers long-lasting freshness and safety.,8,hs4.jpeg,197,16/10/23,14/10/24,,,,
-36,Lysol Air Sanitizer,"Lysol Air Sanitizer is a trusted choice for maintaining clean and fresh air. It effectively eliminates odors and airborne contaminants, ensuring a pleasant environment.",15,hs5.png,164,4/10/23,14/2/24,,,,
-37,ICM Pharma Antiseptic Handrub,ICM Pharma Antiseptic Handrub is designed for thorough hand disinfection. It provides a high level of germ protection and is suitable for healthcare professionals and the general public.,15,hs6.jpeg,149,31/12/23,24/4/24,,,,
-38,Signature Drip,Our Signature Drip is a premium intravenous treatment designed to boost your well-being. It's a top choice for those seeking comprehensive and luxurious healthcare solutions.,61,ivdrip1.jpeg,70,25/11/23,15/9/24,,,,
-39,Recovery Room Baby Bump Drip,The Recovery Room Baby Bump Drip is specially crafted to support expectant mothers. It provides essential nutrients and hydration during pregnancy.,90,ivdrip2.png,363,22/6/23,13/7/24,,,,
-40,Super-B Hydration IV Treatment Drip,Super-B Hydration IV Treatment Drip offers a powerful combination of vitamins and hydration. It's perfect for individuals looking to revitalize and enhance their health.,81,ivdrip3.jpeg,294,3/3/23,29/4/24,,,,
-41,Immunity Drip,The Immunity Drip is formulated to strengthen your immune system. It's a proactive approach to maintaining good health and fighting off illnesses.,59,ivdrip4.jpeg,284,16/7/23,26/7/24,,,,
-42,NAD+1000MG Drip,NAD+1000MG Drip is an advanced treatment option for those looking to promote longevity and cellular health. It's a cutting-edge choice for health-conscious individuals.,67,ivdrip5.jpeg,101,28/4/23,17/5/24,,,,
-43,Ebene Wrist Support,Ebene Wrist Support is known for its comfortable and effective wrist support. It helps alleviate discomfort and provides stability for your wrist.,12,support1.png,155,16/7/23,29/7/24,,,,
-44,3M Futuro Wrist Brace,3M Futuro Wrist Brace is a trusted solution for wrist support and pain relief. It offers adjustable compression and a secure fit for optimal healing.,18,support2.jpeg,236,20/9/23,21/9/24,,,,
-45,Ebene Knee Firm Support,Ebene Knee Firm Support is designed to provide firm support to your knee joint. It offers stability and relief for those with knee-related discomfort.,12,support3.png,272,20/6/23,24/1/24,,,,
-46,3M Futuro Knee Support,3M Futuro Knee Support is a reliable choice for knee support and protection. It's ideal for active individuals seeking injury prevention and recovery.,7,support4.jpeg,362,17/11/23,7/10/24,,,,
-47,Ugoku Knee Support,Ugoku Knee Support is a flexible and adaptable knee brace. It's designed to allow movement while providing essential support during various activities.,8,support5.jpeg,314,27/6/23,26/8/24,,,,
-48,Ebene Bio-Ray Knee Guard,Ebene Bio-Ray Knee Guard is known for its innovative bio-ray technology. It's a therapeutic solution that combines support with energy enhancement for your knees.,18,support6.jpeg,72,27/3/23,23/4/24,,,,
-49,Ebene Bio-Ray Elbow Guard,Ebene Bio-Ray Elbow Guard offers advanced support and energy enhancement for your elbows. It's designed to alleviate discomfort and promote healing.,11,support7.jpeg,158,17/2/23,4/12/24,,,,
-50,Ebene Bio-Ray Elbow Strap,Ebene Bio-Ray Elbow Strap is a versatile solution for targeted elbow support. It combines the benefits of bio-ray technology with compression for your elbow joint.,14,support8.jpeg,67,16/12/23,6/9/24,,,,
-51,Actimove Elbow Support,Actimove Elbow Support is a reliable choice for elbow pain relief and support. It's designed for comfort and effective healing of your elbow joint.,12,support9.jpeg,37,4/10/23,19/3/24,,,,
-52,Dynamic Ankle Binder,Dynamic Ankle Binder is a versatile and adjustable ankle support. It's suitable for various ankle conditions and helps promote stability and recovery.,10,support10.jpeg,203,29/5/23,2/11/24,,,,
-53,3M Futuro Ankle Support,3M Futuro Ankle Support is a trusted choice for ankle support and protection. It's designed to provide compression and stability for your ankle joint.,12,support11.jpeg,349,14/8/23,23/8/24,,,,
-54,Ace Ankle Stabilizer Support,Ace Ankle Stabilizer Support is known for its advanced design that offers both support and flexibility. It's ideal for those seeking stability with the freedom to move.,17,support12.jpeg,102,19/3/23,29/3/24,,,,
-55,Adlikes Ankle Support,Adlikes Ankle Support is a cost-effective solution for ankle support and pain relief. It's suitable for daily wear and provides basic support.,10,support13.jpg,324,1/4/23,30/8/24,,,,
-57,Wing Tai Ventilator,Wing Tai Ventilator is a dependable choice for maintaining proper air circulation. It's designed for efficiency and effective ventilation.,111,ventilator1.jpeg,218,19/1/23,11/9/24,,,,
-58,Shao Lin Ventilator,Shao Lin Ventilator is an advanced ventilation solution that combines performance with energy efficiency. It's ideal for various environments.,117,ventilator2.jpeg,43,26/1/23,28/1/24,,,,
-59,21Savage Ventilator,21Savage Ventilator is known for its durability and reliability. It provides efficient air circulation and is suitable for both residential and commercial use.,95,ventilator3.jpeg,334,16/4/23,28/3/24,,,,
-60,Hawt Dam Ventilator,Hawt Dam Ventilator is designed to deliver exceptional performance. It's perfect for those who require top-quality ventilation in their spaces.,103,ventilator4.jpeg,99,26/1/23,15/9/24,,,,
-61,JayX2 Wheelchair,JayX2 Wheelchair is a versatile and lightweight wheelchair. It offers mobility and comfort for individuals seeking a reliable mode of transportation.,115,wc1.jpeg,228,27/11/23,14/11/24,,,,
-62,ChooChoo Wheelchair,ChooChoo Wheelchair is designed for ease of use and portability. It's perfect for those who require a foldable and compact wheelchair.,99,wc2.jpeg,358,29/8/23,10/8/24,,,,
-63,Boleh Wheelchair,Boleh Wheelchair is known for its sturdy construction and durability. It's a dependable choice for individuals seeking a robust and long-lasting wheelchair.,97,wc3.jpeg,215,4/11/23,8/3/24,,,,
-64,Best Denki Electronic Wheelchair,Best Denki Electronic Wheelchair is a modern and technologically advanced mobility solution. It offers electronic controls and comfort for users.,112,wc4.jpeg,46,5/6/23,29/3/24,,,,
-65,Best Denki Maroon 5 Wheelchair,"Best Denki Maroon 5 Wheelchair is designed for style and convenience. It combines comfort with a fashionable design, making it a standout choice.",114,wc5.jpg,309,26/11/23,18/3/24,,,,
-66,Best Denki Blues Clues Wheelchair,Best Denki Blues Clues Wheelchair is a fun and practical mobility solution for individuals of all ages. It's suitable for those who appreciate a touch of whimsy in their equipment.,108,wc6.jpeg,187,17/4/23,11/6/24,,,,
+oid,email,pid,quantity
+1,jialer.yoo.2021@scis.smu.edu.sg,33,3
+2,jialer.yoo.2021@scis.smu.edu.sg,7,4
+3,jialer.yoo.2021@scis.smu.edu.sg,66,3
+4,jialer.yoo.2021@scis.smu.edu.sg,60,1
+5,jialer.yoo.2021@scis.smu.edu.sg,50,10
+6,jialer.yoo.2021@scis.smu.edu.sg,35,9
+7,jialer.yoo.2021@scis.smu.edu.sg,52,5
+8,jialer.yoo.2021@scis.smu.edu.sg,21,4
+9,jialer.yoo.2021@scis.smu.edu.sg,19,8
+10,jialer.yoo.2021@scis.smu.edu.sg,44,1
+11,jialer.yoo.2021@scis.smu.edu.sg,57,3
+12,jialer.yoo.2021@scis.smu.edu.sg,60,6
+13,jialer.yoo.2021@scis.smu.edu.sg,46,2
+14,jialer.yoo.2021@scis.smu.edu.sg,42,3
+15,jialer.yoo.2021@scis.smu.edu.sg,36,3
+16,jialer.yoo.2021@scis.smu.edu.sg,28,6
+17,jialer.yoo.2021@scis.smu.edu.sg,41,1
+18,jialer.yoo.2021@scis.smu.edu.sg,24,3
+19,jialer.yoo.2021@scis.smu.edu.sg,30,6
+20,jialer.yoo.2021@scis.smu.edu.sg,8,3
+21,jialer.yoo.2021@scis.smu.edu.sg,12,4
+22,jialer.yoo.2021@scis.smu.edu.sg,25,2
+23,jialer.yoo.2021@scis.smu.edu.sg,7,2
+24,jialer.yoo.2021@scis.smu.edu.sg,46,3
+25,jialer.yoo.2021@scis.smu.edu.sg,20,9
+26,jialer.yoo.2021@scis.smu.edu.sg,21,9
+27,jialer.yoo.2021@scis.smu.edu.sg,12,6
+28,jialer.yoo.2021@scis.smu.edu.sg,28,6
+29,jialer.yoo.2021@scis.smu.edu.sg,26,2
+30,jialer.yoo.2021@scis.smu.edu.sg,52,10
+31,jialer.yoo.2021@scis.smu.edu.sg,18,1
+32,jialer.yoo.2021@scis.smu.edu.sg,25,8
+33,jialer.yoo.2021@scis.smu.edu.sg,51,3
+34,jialer.yoo.2021@scis.smu.edu.sg,1,9
+35,jialer.yoo.2021@scis.smu.edu.sg,22,8
+36,jialer.yoo.2021@scis.smu.edu.sg,57,9
+37,jialer.yoo.2021@scis.smu.edu.sg,10,2
+38,jialer.yoo.2021@scis.smu.edu.sg,18,10
+39,jialer.yoo.2021@scis.smu.edu.sg,11,10
+40,jialer.yoo.2021@scis.smu.edu.sg,3,2
+41,jialer.yoo.2021@scis.smu.edu.sg,52,5
+42,jialer.yoo.2021@scis.smu.edu.sg,46,5
+43,jialer.yoo.2021@scis.smu.edu.sg,43,7
+44,jialer.yoo.2021@scis.smu.edu.sg,39,5
+45,jialer.yoo.2021@scis.smu.edu.sg,13,6
+46,jialer.yoo.2021@scis.smu.edu.sg,28,9
+47,jialer.yoo.2021@scis.smu.edu.sg,10,1
+48,jialer.yoo.2021@scis.smu.edu.sg,17,4
+49,jialer.yoo.2021@scis.smu.edu.sg,63,2
+50,jialer.yoo.2021@scis.smu.edu.sg,37,9

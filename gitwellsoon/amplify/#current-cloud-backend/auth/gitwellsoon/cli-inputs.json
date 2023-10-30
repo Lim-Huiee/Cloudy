@@ -3,7 +3,7 @@
   "cognitoConfig": {
     "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "gitwel44edbc5b",
+    "resourceNameTruncated": "gitwel1d9ae164",
     "userPoolName": "gitwellsoon",
     "autoVerifiedAttributes": [
       "email"
@@ -25,17 +25,16 @@
       "Requires Uppercase"
     ],
     "requiredAttributes": [
-      "email",
-      "name"
+      "email"
     ],
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "gitwel44edbc5b_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "gitwel1d9ae164_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "44edbc5b",
+    "sharedId": "1d9ae164",
     "resourceName": "gitwellsoon",
     "authSelections": "identityPoolAndUserPool",
     "serviceName": "Cognito",

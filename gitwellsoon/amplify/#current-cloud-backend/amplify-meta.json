@@ -24,8 +24,7 @@
           "EMAIL"
         ],
         "signupAttributes": [
-          "EMAIL",
-          "NAME"
+          "EMAIL"
         ],
         "passwordProtectionSettings": {
           "passwordPolicyMinLength": 8,
@@ -48,17 +47,17 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-gitwellsoon-staging-93600-deployment/amplify-cfn-templates/auth/gitwellsoon-cloudformation-template.json",
         "logicalId": "authgitwellsoon"
       },
-      "lastPushTimeStamp": "2023-10-30T09:41:01.695Z",
+      "lastPushTimeStamp": "2023-10-30T12:11:20.965Z",
       "output": {
-        "UserPoolId": "ap-southeast-1_GpZvL1kh5",
-        "AppClientIDWeb": "3iecnhv7nei258jka4ckah4dq2",
-        "AppClientID": "191r1c8oenhfjtsokomjc7gm9d",
-        "IdentityPoolId": "ap-southeast-1:4f8dc601-739d-48a7-b3e1-45f8d65276a1",
-        "UserPoolArn": "arn:aws:cognito-idp:ap-southeast-1:319673250931:userpool/ap-southeast-1_GpZvL1kh5",
+        "UserPoolId": "ap-southeast-1_nXOurdApX",
+        "AppClientIDWeb": "7oe5js33bajk5l37etvj34hk1e",
+        "AppClientID": "gdo1b4g3njqs1hddlkjnr329q",
+        "IdentityPoolId": "ap-southeast-1:7a376960-2051-467b-9638-b21e920f6af4",
+        "UserPoolArn": "arn:aws:cognito-idp:ap-southeast-1:319673250931:userpool/ap-southeast-1_nXOurdApX",
         "IdentityPoolName": "testAuthIdentityPool__staging",
         "UserPoolName": "gitwellsoon"
       },
-      "lastPushDirHash": "AzR0DtD3T7hmbi2vgA2Z+By30mk="
+      "lastPushDirHash": "jBvnaux5ORrgXbcoAp05K8J/j/c="
     }
   }
 }

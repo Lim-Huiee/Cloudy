@@ -1,10 +1,10 @@
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
-  <authenticator />
-
+  <authenticator>
+    <template v-slot = "{user, signOut}">
+      <button @click="signOut">Sign Out</button>
+    </template>
+  </authenticator>
 </template>
 
 <script>

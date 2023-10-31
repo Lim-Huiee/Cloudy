@@ -34,7 +34,6 @@ const store = createStore({
         commit('setProducts', products);
         commit('setLoader', false);
         
-        return products
       } catch (error) {
         console.log(error);
       }

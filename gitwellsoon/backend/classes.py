@@ -33,12 +33,14 @@ class Accounts(db.Model):
 
 class Products(db.Model):
     __tablename__ = "products"
-    def __init__(self, pid, pcat, pname, pdesc, img_src, stock, prod_date, expiry_date):
+    def __init__(self, pid, pcat, pname, pdesc, img_src, pprice, stock, prod_date, expiry_date):
         self.pid = pid
         self.pcat = pcat
         self.pname = pname
         self.pdesc = pdesc
         self.img_src = img_src
+        self.pprice = pprice
+
         self.stock = stock
         self.prod_date = prod_date
         self.expiry_date = expiry_date
@@ -48,6 +50,7 @@ class Products(db.Model):
     pname = db.Column(db.String(255), nullable=False)  
     pdesc = db.Column(db.String(255), nullable=False)  
     img_src = db.Column(db.String(255), nullable=False)  
+    pprice = db.Column(db.Integer, nullable=False)  
     stock = db.Column(db.Integer, nullable=False)  
     prod_date = db.Column(db.Date, nullable=False)
     expiry_date = db.Column(db.Date, nullable=False)

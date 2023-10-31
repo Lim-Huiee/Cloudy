@@ -6,6 +6,7 @@ products_bp = Blueprint('products_bp', __name__)
 @products_bp.route('/product_list', methods=['GET'])
 def get_all_products():
     try:
+
         products = Products.query.all()
         products_list = []
         for product in products:
@@ -15,9 +16,10 @@ def get_all_products():
                 'pname': product.pname,
                 'pdesc': product.pdesc,
                 'img_src': product.img_src,
+                'pprice': product.pprice,
                 'stock': product.stock,
-                'prod_date': product.prod_date,
-                'expiry_date': product.expiry_date
+                'prod_date': product.prod_date.strftime('%Y-%m-%d'),
+                'expiry_date': product.expiry_date.strftime('%Y-%m-%d')
             }
 
             products_list.append(product_obj)

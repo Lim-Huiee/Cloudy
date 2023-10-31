@@ -2,6 +2,7 @@ import './assets/main.css'
 
 import { createApp } from 'vue'
 import App from './App.vue'
+import store from './store'
 import router from './router'
 import awsConfig from "../aws-exports"
 import Auth from "@aws-amplify/auth"
@@ -15,8 +16,8 @@ import "bootstrap-icons/font/bootstrap-icons.json"
 
 Auth.configure(awsConfig);
 
-const app = createApp(App)
-
-app.use(router)
-
-app.mount('#app')
+createApp(App)
+    .provide('$fetch', fetch)
+    .use(store)
+    .use(router)
+    .mount('#app')

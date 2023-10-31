@@ -91,6 +91,7 @@
 
 <script>
 import { defineComponent } from 'vue';
+import { mapActions, mapGetters, mapMutations } from "vuex";
 
 export default {
     name: "ShopPage",
@@ -99,6 +100,7 @@ export default {
     data(){
         return {
             view: 'bpm',
+            test_product_list: [],
             product_list: {
                 bandage_list: [{
                         pid: '1',
@@ -202,10 +204,14 @@ export default {
         if (JSON.parse(localStorage.getItem("cartQty"))) {
             this.cart_qty = JSON.parse(localStorage.getItem("cartQty"));
         }
+        // console.log(await this.getAllProducts());
+        console.log(this.products)
     },
     computed: {
+        ...mapGetters(['products'])
     },
     methods: {
+        // ...mapActions(['getAllProducts']),
         changeView(selectedView) {
             this.selected_list = this.product_list[selectedView + '_list'];
             console.log(this.selected_list);

@@ -15,6 +15,7 @@ CREATE TABLE `accounts` (
 DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
     `pid` INT AUTO_INCREMENT NOT NULL,
+    `pcat` VARCHAR(255) NOT NULL,
     `pname` VARCHAR(255) NOT NULL,
     `pdesc` VARCHAR(255) NOT NULL,
     `pprice` VARCHAR(255) NOT NULL,
@@ -40,29 +41,29 @@ CREATE TABLE `orders` (
 );
 
 -- import gitwellsoon login table
-LOAD DATA INFILE '/Applications/MAMP/tmp/gitwellsoon_login.csv'  -- replace with the directory where your csv is located
+LOAD DATA INFILE 'C:/wamp64/tmp/gitwellsoon_login.csv'  -- replace with the directory where your csv is located
 INTO TABLE ACCOUNTS 
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
-LINES TERMINATED BY '\n' 
+LINES TERMINATED BY '\r\n' 
 IGNORE 1 ROWS
 (username, password, email);
 
 -- import gitwellsoon products table
-LOAD DATA INFILE '/Applications/MAMP/tmp/gitwellsoon_products.csv'  -- replace with the directory where your csv is located
+LOAD DATA INFILE 'C:/wamp64/tmp/gitwellsoon_products.csv'  -- replace with the directory where your csv is located
 INTO TABLE PRODUCTS 
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
-LINES TERMINATED BY '\n' 
+LINES TERMINATED BY '\r\n' 
 IGNORE 1 ROWS
-(pid, pname, pdesc, pprice, img_src, stock, prod_date, expiry_date);
+(pid, pcat, pname, pdesc, pprice, img_src, stock, prod_date, expiry_date);
 
 -- import gitwellsoon orders table
-LOAD DATA INFILE '/Applications/MAMP/tmp/gitwellsoon_orders.csv'  -- replace with the directory where your csv is located
+LOAD DATA INFILE 'C:/wamp64/tmp/gitwellsoon_orders.csv'  -- replace with the directory where your csv is located
 INTO TABLE ORDERS 
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
-LINES TERMINATED BY '\n' 
+LINES TERMINATED BY '\r\n' 
 IGNORE 1 ROWS
 (oid, email, pid, quantity);
 

@@ -10,6 +10,7 @@ import CartPage from '../views/CartPage.vue'
 import CartCheckoutPage from '../views/CartCheckoutPage.vue'
 import PaymentSuccessPage from '../views/PaymentSuccessPage.vue'
 import LoginPage from '../views/LoginPage.vue'
+import ProfilePage from '../views/ProfilePage.vue'
 
 import navBar from "../components/pageNavBar.vue"
 
@@ -52,6 +53,12 @@ const routes = [
         path: '/login',
         name: 'Login',
         component: LoginPage,
+        meta: {requiredAuthorization: false}
+      },
+      {
+        path: '/profile',
+        name: 'Profile',
+        component: ProfilePage,
         meta: {requiredAuthorization: false}
       },
       {

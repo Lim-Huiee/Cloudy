@@ -115,6 +115,7 @@ export default {
 
 .content-body{
     min-height: 100vh;
+    padding:0 !important;
 }
 
 /* Nav */

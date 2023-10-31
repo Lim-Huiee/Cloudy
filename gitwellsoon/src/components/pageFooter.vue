@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid p-0">
         <footer class="bg-dark" id="tempaltemo_footer">
             <div class="container">
                 <div class="row">

@@ -18,7 +18,7 @@
                 <div class="container d-flex justify-content-between align-items-center">
 
                     <a class="navbar-brand text-info logo h1 align-self-center">
-                        <router-link to="/home">
+                        <router-link to="/">
                             <img src="../assets/logo/Git Well Soon (Transparent).png" style="width:25%;">
                         </router-link>
                     </a>

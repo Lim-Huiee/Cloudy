@@ -1,11 +1,11 @@
 <template>
-    <div class="">
+    <div class="container-fluid">
         <!-- Start Banner Hero -->
         <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
             <ol class="carousel-indicators">
-                <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
-                <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
-                <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
+                <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" style="list-style-type:none;" class="active"></li>
+                <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1" style="list-style-type:none;"></li>
+                <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2" style="list-style-type:none;"></li>
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -37,7 +37,6 @@
                             <div class="col-lg-6 mb-0 d-flex align-items-center">
                                 <div class="text-align-left">
                                     <h1 class="h1 text-success"><strong>Empowering Health and Wellbeing</strong></h1>
-                                    <!-- <h3 class="h2">Aliquip ex ea commodo consequat</h3> -->
                                     <p>
                                         At Git Well Soon, we're on a mission to empower individuals and healthcare professionals by offering a <strong>convenient and comprehensive 
                                             online shopping experience</strong>. We believe that access to top-notch medical supplies is crucial for maintaining good health, 
@@ -57,7 +56,6 @@
                             <div class="col-lg-6 mb-0 d-flex align-items-center">
                                 <div class="text-align-left">
                                     <h1 class="h1 text-success"><strong>Your Trusted Healthcare Partner</strong></h1>
-                                    <!-- <h3 class="h2">Ullamco laboris nisi ut </h3> -->
                                     <p>
                                         Welcome to Git Well Soon, your <strong>trusted destination</strong> for all your medical supply needs. 
                                         We understand the importance of reliable and accessible healthcare products, and we're here to provide you with a wide range 
@@ -78,95 +76,95 @@
         </div>
         <!-- End Banner Hero -->
 
-            <!-- Start Featured Product -->
-    <section class="bg-white">
-        <div class="container py-5">
-            <div class="row text-center py-3">
-                <div class="col-lg-6 m-auto">
-                    <h1 class="h1 text-success"><strong>Featured Product</strong></h1>
-                    <p>
-                        Explore our featured products - where quality meets care.
-                    </p>
+        <!-- Start Featured Product -->
+        <section class="bg-white">
+            <div class="container py-5">
+                <div class="row text-center py-3">
+                    <div class="col-lg-6 m-auto">
+                        <h1 class="h1 text-success"><strong>Featured Product</strong></h1>
+                        <p>
+                            Explore our featured products - where quality meets care.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-4 mb-4">
+                        <div class="card h-100">
+                            <a href="shop-single.html">
+                                <img src="../assets/Product Data/glove5.jpeg" class="card-img-top" alt="...">
+                            </a>
+                            <div class="card-body">
+                                <ul class="list-unstyled d-flex justify-content-between">
+                                    <li>
+                                        <i class="text-warning fa fa-star"></i>
+                                        <i class="text-warning fa fa-star"></i>
+                                        <i class="text-warning fa fa-star"></i>
+                                        <i class="text-warning fa fa-star"></i>
+                                        <i class="text-muted fa fa-star"></i>
+                                    </li>
+                                    <li class="text-muted text-right">$5.00</li>
+                                </ul>
+                                <a href="shop-single.html" class="h2 text-decoration-none text-dark">Nitrile Gloves</a>
+                                <p class="card-text">
+                                    Crafted with precision and care, Nitrile gloves are the ideal choice for a variety of applications, from medical procedures to everyday tasks. 
+                                    Discover superior quality and reliability with every pair.
+                                </p>
+                                <p class="text-muted">Reviews (24)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 mb-4">
+                        <div class="card h-100">
+                            <a href="shop-single.html">
+                                <img src="../assets/Product Data/wc6.jpeg" class="card-img-top" alt="...">
+                            </a>
+                            <div class="card-body">
+                                <ul class="list-unstyled d-flex justify-content-between">
+                                    <li>
+                                        <i class="text-warning fa fa-star"></i>
+                                        <i class="text-warning fa fa-star"></i>
+                                        <i class="text-warning fa fa-star"></i>
+                                        <i class="text-warning fa fa-star"></i>
+                                        <i class="text-warning fa fa-star"></i>
+                                    </li>
+                                    <li class="text-muted text-right">$480.00</li>
+                                </ul>
+                                <a href="shop-single.html" class="h2 text-decoration-none text-dark">SJAPEX Wheelchair</a>
+                                <p class="card-text">
+                                    Experience enhanced mobility and comfort with our thoughtfully designed wheelchairs, perfect for short-term recovery or long-term use.
+                                </p>
+                                <p class="text-muted">Reviews (48)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 mb-4">
+                        <div class="card h-100">
+                            <a href="shop-single.html">
+                                <img src="../assets/Product Data/fak2.jpeg" class="card-img-top" alt="...">
+                            </a>
+                            <div class="card-body">
+                                <ul class="list-unstyled d-flex justify-content-between">
+                                    <li>
+                                        <i class="text-warning fa fa-star"></i>
+                                        <i class="text-warning fa fa-star"></i>
+                                        <i class="text-warning fa fa-star"></i>
+                                        <i class="text-warning fa fa-star"></i>
+                                        <i class="text-warning fa fa-star"></i>
+                                    </li>
+                                    <li class="text-muted text-right">$360.00</li>
+                                </ul>
+                                <a href="shop-single.html" class="h2 text-decoration-none text-dark">First Aid Kit</a>
+                                <p class="card-text">
+                                    Packed with life-saving supplies, it's your go-to resource for handling unexpected injuries and emergencies. Stay ready and stay safe with our comprehensive First Aid Kit.
+                                </p>
+                                <p class="text-muted">Reviews (74)</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100">
-                        <a href="shop-single.html">
-                            <img src="../assets/Product Data/glove5.jpeg" class="card-img-top" alt="...">
-                        </a>
-                        <div class="card-body">
-                            <ul class="list-unstyled d-flex justify-content-between">
-                                <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                </li>
-                                <li class="text-muted text-right">$5.00</li>
-                            </ul>
-                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">Nitrile Gloves</a>
-                            <p class="card-text">
-                                Crafted with precision and care, Nitrile gloves are the ideal choice for a variety of applications, from medical procedures to everyday tasks. 
-                                Discover superior quality and reliability with every pair.
-                            </p>
-                            <p class="text-muted">Reviews (24)</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100">
-                        <a href="shop-single.html">
-                            <img src="../assets/Product Data/wc6.jpeg" class="card-img-top" alt="...">
-                        </a>
-                        <div class="card-body">
-                            <ul class="list-unstyled d-flex justify-content-between">
-                                <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                </li>
-                                <li class="text-muted text-right">$480.00</li>
-                            </ul>
-                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">SJAPEX Wheelchair</a>
-                            <p class="card-text">
-                                Experience enhanced mobility and comfort with our thoughtfully designed wheelchairs, perfect for short-term recovery or long-term use.
-                            </p>
-                            <p class="text-muted">Reviews (48)</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100">
-                        <a href="shop-single.html">
-                            <img src="../assets/Product Data/fak2.jpeg" class="card-img-top" alt="...">
-                        </a>
-                        <div class="card-body">
-                            <ul class="list-unstyled d-flex justify-content-between">
-                                <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                </li>
-                                <li class="text-muted text-right">$360.00</li>
-                            </ul>
-                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">First Aid Kit</a>
-                            <p class="card-text">
-                                Packed with life-saving supplies, it's your go-to resource for handling unexpected injuries and emergencies. Stay ready and stay safe with our comprehensive First Aid Kit.
-                            </p>
-                            <p class="text-muted">Reviews (74)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Featured Product -->
+        </section>
+        <!-- End Featured Product -->
     </div>
 </template>
 
@@ -174,12 +172,18 @@
 import { defineComponent } from 'vue';
 
 export default {
-    name: "",
+    name: "LandingPage",
     components: {
     },
     data(){
+        return {
+            cart_qty: 0
+        }
     },
     async mounted() {
+        if (JSON.parse(localStorage.getItem("cartQty"))) {
+            this.cart_qty = JSON.parse(localStorage.getItem("cartQty"));
+        }
     },
     computed: {
     },
@@ -187,3 +191,26 @@ export default {
     },
 }
 </script>
+
+<style scoped>
+/* Carousel Hero */
+#template-mo-zay-hero-carousel .carousel-indicators li {
+  margin-top: -50px;
+  background-color: #0cc0df;
+}
+#template-mo-zay-hero-carousel .carousel-control-next i,
+#template-mo-zay-hero-carousel .carousel-control-prev i {
+  color: #0cc0df !important;
+  font-size: 2.8em !important;
+}
+/* Carousel Brand */
+.tempaltemo-carousel .h1 {
+  font-size: .5em !important;
+  color: #000 !important;
+}
+/* Hero Carousel */
+#template-mo-zay-hero-carousel { background: #efefef !important;}
+/* Accordion */
+.templatemo-accordion a { color: #000;}
+.templatemo-accordion a:hover { color: #333d4a;}
+</style>

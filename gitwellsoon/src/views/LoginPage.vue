@@ -1,6 +1,6 @@
 
 <template>
-  <authenticator>
+  <authenticator class="mt-5">
     <template v-slot = "{user, signOut}">
       <button @click="signOut">Sign Out</button>
     </template>

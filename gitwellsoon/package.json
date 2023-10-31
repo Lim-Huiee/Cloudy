@@ -12,6 +12,9 @@
     "@aws-amplify/ui-vue": "^3.1.29",
     "@vue/cli-service": "^5.0.8",
     "aws-amplify": "^5.3.11",
+    "bootstrap": "^5.3.2",
+    "bootstrap-icons": "^1.11.1",
+    "react-bootstrap": "^2.9.1",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5"
   },

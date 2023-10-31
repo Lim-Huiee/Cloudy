@@ -1,11 +1,16 @@
+<script setup>
+</script>
+
 <template>
-  <router-view></router-view>
+  <div id="app">
+    <router-view/>
+  </div>
 </template>
 
 <script>
 
 export default {
-  name: 'App',
+  name: 'app',
   components: {
   }
 }
@@ -13,6 +18,11 @@ export default {
 
 
 <style scoped>
+#app{
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
 header {
   line-height: 1.5;
   max-height: 100vh;

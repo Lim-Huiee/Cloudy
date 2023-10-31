@@ -1,8 +1,4 @@
 import './assets/main.css'
-import './assets/css/bootstrap.min.css'
-import './assets/css/templatemo.css'
-import './assets/css/custom.css'
-
 
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -11,6 +7,11 @@ import awsConfig from "../aws-exports"
 import Auth from "@aws-amplify/auth"
 // import Auth from "aws-amplify"
 import "@aws-amplify/ui-vue/styles.css"
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'
+import 'bootstrap'
+import './assets/css/templatemo.css'
+import "bootstrap-icons/font/bootstrap-icons.json"
 
 Auth.configure(awsConfig);
 

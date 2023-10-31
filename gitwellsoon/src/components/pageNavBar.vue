@@ -96,6 +96,16 @@ export default {
     name: "navBar",
     components: {
         pageFooter
+    },
+    data() {
+        return {
+            cart_qty: 0
+        }
+    },
+    async mounted() {
+         if (JSON.parse(localStorage.getItem("cartQty"))) {
+            this.cart_qty = JSON.parse(localStorage.getItem("cartQty"));
+        }
     }
 }
 

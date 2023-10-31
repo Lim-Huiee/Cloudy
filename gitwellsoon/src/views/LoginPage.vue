@@ -13,7 +13,7 @@ import {Authenticator} from "@aws-amplify/ui-vue";
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: "Home",
+  name: "Login",
   components: {
     TheWelcome,
     Authenticator

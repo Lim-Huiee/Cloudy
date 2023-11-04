@@ -9,7 +9,7 @@ import ShopProductPage from '../views/ShopProductPage.vue'
 import CartPage from '../views/CartPage.vue'
 import CartCheckoutPage from '../views/CartCheckoutPage.vue'
 import PaymentSuccessPage from '../views/PaymentSuccessPage.vue'
-import LoginPage from '../views/LoginPage.vue'
+import StaffLoginPage from '../views/StaffLoginPage.vue'
 import ProfilePage from '../views/ProfilePage.vue'
 
 import navBar from "../components/pageNavBar.vue"
@@ -52,7 +52,7 @@ const routes = [
       {
         path: '/login',
         name: 'Login',
-        component: LoginPage,
+        component: StaffLoginPage,
         meta: {requiredAuthorization: false}
       },
       {

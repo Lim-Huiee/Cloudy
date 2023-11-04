@@ -55,7 +55,7 @@
                                         <label for="email_address">Email Address <span>*</span></label>
                                         <input type="email" class="form-control" id="email_address" value="">
                                     </div>
-
+<!-- 
                                     <div class="col-12">
                                         <a href="/login" class="btn karl-checkout-btn mt-2 mb-4" style="background-color:#0CC0DF">Login</a>
                                         <div class="createaccount">
@@ -64,7 +64,7 @@
                                         <router-link to="/login">
                                             <a class="btn karl-checkout-btn mt-2" style="background-color:#0CC0DF">Create an account</a>
                                         </router-link>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </form>
                         </div>

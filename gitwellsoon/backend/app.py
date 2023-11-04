@@ -1,5 +1,5 @@
 from flask_cors import CORS
-from classes import app
+from test import app
 from features.products import products_bp
 
 app.register_blueprint(products_bp)

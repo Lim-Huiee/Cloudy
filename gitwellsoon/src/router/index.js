@@ -11,6 +11,8 @@ import CartCheckoutPage from '../views/CartCheckoutPage.vue'
 import PaymentSuccessPage from '../views/PaymentSuccessPage.vue'
 import StaffLoginPage from '../views/StaffLoginPage.vue'
 import ProfilePage from '../views/ProfilePage.vue'
+import StaffLandingPage from '../views/StaffLandingPage.vue'
+
 
 import navBar from "../components/pageNavBar.vue"
 
@@ -77,6 +79,12 @@ const routes = [
         path: '/paymentSuccess',
         name: "Payment Success",
         component: PaymentSuccessPage,
+        meta: {requiredAuthorization: false}
+      },
+      {
+        path: '/StaffLandingPage',
+        name: "Staff Landing Page",
+        component: StaffLandingPage,
         meta: {requiredAuthorization: false}
       }
     ]

@@ -14,17 +14,12 @@
   },
   "auth": {
     "gitwellsoon": {
-      "service": "Cognito",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [],
       "customAuth": false,
+      "dependsOn": [],
       "frontendAuthConfig": {
-        "socialProviders": [],
-        "usernameAttributes": [
-          "EMAIL"
-        ],
-        "signupAttributes": [
-          "EMAIL"
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
         ],
         "passwordProtectionSettings": {
           "passwordPolicyMinLength": 8,
@@ -35,19 +30,19 @@
             "REQUIRES_UPPERCASE"
           ]
         },
-        "mfaConfiguration": "OFF",
-        "mfaTypes": [
-          "SMS"
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
         ],
         "verificationMechanisms": [
           "EMAIL"
         ]
       },
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-gitwellsoon-staging-93600-deployment/amplify-cfn-templates/auth/gitwellsoon-cloudformation-template.json",
-        "logicalId": "authgitwellsoon"
-      },
-      "lastPushTimeStamp": "2023-10-30T12:11:20.965Z",
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
       "output": {
         "UserPoolId": "ap-southeast-1_nXOurdApX",
         "AppClientIDWeb": "7oe5js33bajk5l37etvj34hk1e",
@@ -57,7 +52,12 @@
         "IdentityPoolName": "testAuthIdentityPool__staging",
         "UserPoolName": "gitwellsoon"
       },
-      "lastPushDirHash": "jBvnaux5ORrgXbcoAp05K8J/j/c="
+      "lastPushTimeStamp": "2023-11-04T06:52:56.547Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-gitwellsoon-staging-93600-deployment/amplify-cfn-templates/auth/gitwellsoon-cloudformation-template.json",
+        "logicalId": "authgitwellsoon"
+      },
+      "lastPushDirHash": "CSIAAIY/jEhTyO7NmRYgVdgF97w="
     }
   }
 }

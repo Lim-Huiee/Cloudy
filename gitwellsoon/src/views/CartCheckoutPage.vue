@@ -99,9 +99,10 @@
                                
                             </div>
 
-                            <router-link to="/paymentSuccess">
-                                <a href="./paymentsuccess.html" class="btn karl-checkout-btn" style="background-color:#0CC0DF">Place Order</a>
-                            </router-link>
+                            <!-- <router-link to="/paymentSuccess"> -->
+                                <!-- <a href="./paymentsuccess.html" class="btn karl-checkout-btn" style="background-color:#0CC0DF">Place Order</a> -->
+                                <a class="btn karl-checkout-btn" @click="callTriggerPayment()" style="background-color:#0CC0DF">Place Order</a>
+                            <!-- </router-link> -->
                         </div>
                     </div>
 
@@ -141,7 +142,27 @@ export default {
         },
         tabulateFinalPrice() {
             this.final_price = this.total_price + this.shippingMethod;
-        }
+        },
+        callTriggerPayment() {
+            // TriggerPayment
+            const response = fetch('https://uxgheebrgoi7mbz26szg7c6ffe0zpzyg.lambda-url.ap-southeast-1.on.aws/')
+            .then((response) => response.json()) 
+            .then(data => {
+                console.log(data);
+                return data.statusCode;
+            })
+            .catch(error => {
+                console.log(error);
+            })
+        },
+        // TriggerPayment
+        // https://uxgheebrgoi7mbz26szg7c6ffe0zpzyg.lambda-url.ap-southeast-1.on.aws/
+
+        // TriggerRegisterEmail
+        // https://t5koenoe6ciiufp4cimt34cng40imejk.lambda-url.ap-southeast-1.on.aws/ 
+
+        // TriggerSendEmail
+        // https://h54bsx4ar5iywpwfe5endxgj4m0bgubt.lambda-url.ap-southeast-1.on.aws/
     },
 }
 </script>

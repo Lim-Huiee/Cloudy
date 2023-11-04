@@ -38,6 +38,29 @@ const store = createStore({
         console.log(error);
       }
     },
+    async createProduct(_,payload) {
+      try { 
+        await fetch({
+          method: 'POST',
+          url: '/create_product',
+          data: payload
+        })
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async deleteProduct({commit}, payload) {
+      try {
+        await fetch({
+          method: 'DELETE',
+          url: 'delete_product',
+          data: payload
+        })
+        commit('setToastrResponse', {isError: false, msg: 'Product has been deleted!'}, {root: true});
+      } catch (error) {
+          console.log(error);
+      }
+  },
   },
   modules: {},
   plugins: []

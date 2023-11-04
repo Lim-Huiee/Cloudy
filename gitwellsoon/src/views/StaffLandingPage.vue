@@ -5,9 +5,9 @@
         <div class="row">
                 <div>
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-success" @click="attachModalData('New')">Add</button>
-                        <button type="button" class="btn btn-success" @click="attachModalData('Edit', this.products)">Edit</button>
-                        <button type="button" class="btn btn-success" @click="attachModalData('Delete', this.products)">Delete</button>
+                        <router-link to="/StaffSettingPageAdd" class="nav-link text-decoration-none">
+                            <button type="button" class="btn btn-success" @click="attachModalData('New')">Add</button>
+                        </router-link>
                     </div>
                 </div>
                 <table class="table mt-3">
@@ -22,6 +22,8 @@
                             <th>Stock</th>
                             <th>Production date</th>
                             <th>Expiry date</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                         <tr v-for="(each, index) in this.products" :key="each">
                             <th scope="row">{{ index }}</th>
@@ -33,22 +35,23 @@
                             <td>{{ each.stock }}</td>
                             <td>{{ each.prod_date }}</td>
                             <td>{{ each.expiry_date }}</td>
+                            <td><button type="btn btn-success" @click="editProduct(each)">Edit</button></td>
+                            <td><button type="btn btn-success" @click="deleteProduct(each)">Delete</button></td>
                         </tr>
                     </tbody>
                 </table>
         </div>
     </div>
-    <SystemSettingsModal @result="result" :modalData="modalData"/>
+    <SystemSettingsModal :modalData="modalData"/>
 
 </template>
 <script>
+import { getTransitionRawChildren } from "vue";
 import { mapActions, mapGetters, mapMutations } from "vuex";
-import  SystemSettingsModal from "../components/SystemSettingsModal.vue"
 
 export default {
     name: "SettingsPage",
     components: {
-        SystemSettingsModal,
     },
     data() {
         return {
@@ -62,16 +65,20 @@ export default {
         ...mapGetters(['products']),
     },
     methods: {
-        ...mapActions(['getAllProducts']),
+        ...mapActions(['getAllProducts', 'deleteProduct']),
         ...mapMutations(),
         attachModalData(action, data) {
             this.modalData['action'] = action;
             this.modalData['data'] = data;
             console.log(this.modalData);
         },
-        async result() {
-            this.getAllProducts();
+        editProduct(details) {
+            console.log(details)
         },
+        async deleteProduct(details) {
+            console.log(details)
+            await this.deleteProduct(details);
+        }
     }
 }
 </script>

@@ -13,8 +13,8 @@
                             <h3>Monitoring</h3>
                         </a>
                         <ul class="show list-unstyled pl-3">
-                            <li><a class="text-decoration-none" href="#" @click="changeView('bpm')">Blood Pressure Monitor</a></li>
-                            <li><a class="text-decoration-none" href="#" @click="changeView('ventilator')">Ventilators</a></li>
+                            <li><a class="text-decoration-none" href="#" @click="changeView('Blood Pressure Monitor')">Blood Pressure Monitor</a></li>
+                            <li><a class="text-decoration-none" href="#" @click="changeView('Ventilator')">Ventilators</a></li>
                         </ul>
                     </li>
                     <li class="pb-3">
@@ -22,8 +22,8 @@
                             <h3>Medical Equipments</h3>
                         </a>
                         <ul class="list-unstyled pl-3">
-                            <li><a class="text-decoration-none" href="#" @click="changeView('wc')">Wheelchairs</a></li>
-                            <li><a class="text-decoration-none" href="#" @click="changeView('ivdrip')">IV Drips</a></li>
+                            <li><a class="text-decoration-none" href="#" @click="changeView('Wheelchair')">Wheelchairs</a></li>
+                            <li><a class="text-decoration-none" href="#" @click="changeView('IV drips')">IV Drips</a></li>
                         </ul>
                     </li>
 
@@ -32,12 +32,12 @@
                             <h3>Accessories</h3>
                         </a>
                         <ul class="list-unstyled pl-3" >
-                            <li><a class="text-decoration-none" href="#" @click="changeView('bandage')">Bandage</a></li>
-                            <li><a class="text-decoration-none" href="#" @click="changeView('fm')">Face Mask</a></li>
-                            <li><a class="text-decoration-none" href="#" @click="changeView('fak')">First Aid Kit</a></li>
-                            <li><a class="text-decoration-none" href="#" @click="changeView('glove')">Gloves</a></li>
-                            <li><a class="text-decoration-none" href="#" @click="changeView('hs')">Hand Sanitizer</a></li>
-                            <li><a class="text-decoration-none" href="#" @click="changeView('support')">Supporting guards</a></li>
+                            <li><a class="text-decoration-none" href="#" @click="changeView('Bandage')">Bandage</a></li>
+                            <li><a class="text-decoration-none" href="#" @click="changeView('Blood Pressure Monitor')">Face Mask</a></li>
+                            <li><a class="text-decoration-none" href="#" @click="changeView('Face Mask')">First Aid Kit</a></li>
+                            <li><a class="text-decoration-none" href="#" @click="changeView('Gloves')">Gloves</a></li>
+                            <li><a class="text-decoration-none" href="#" @click="changeView('Hand Sanitizer')">Hand Sanitizer</a></li>
+                            <li><a class="text-decoration-none" href="#" @click="changeView('Support')">Supporting guards</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -48,7 +48,7 @@
                     <div class="col-md-4" v-for="OneListing in selected_list">
                         <div class="card mb-4 product-wap rounded-0">
                             <div class="card rounded-0">
-                                <img class="card-img rounded-0 img-fluid" :src="OneListing.image">
+                                <img class="card-img rounded-0 img-fluid" :src="'../../public/Product Data/' + OneListing.img_src">
                                 <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
                                         <li><router-link to="/shopProduct" class="btn btn-success text-white mt-2" @click="sendPage(OneListing)"><i class="bi bi-eye"></i></router-link></li>
@@ -56,7 +56,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <a href="shop-single.html" class="h3 text-decoration-none">{{OneListing.productName}}</a>
+                                <a href="shop-single.html" class="h3 text-decoration-none">{{OneListing.pname}}</a>
                                 <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                                     <li class="pt-2">
                                         <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
@@ -75,7 +75,7 @@
                                         <i class="text-muted fa fa-star"></i>
                                     </li>
                                 </ul>
-                                <p class="text-center mb-0">${{OneListing.price}}</p>
+                                <p class="text-center mb-0">${{OneListing.pprice}}</p>
                             </div>
                         </div>
                     </div>
@@ -191,29 +191,26 @@ export default {
                         price: '3.00'
                     }]
             },
-            selected_list:[{
-                        pid: '7',
-                        productName: 'Omron blood pressure monitor',
-                        image: '../assets/Product Data/bpm1.jpeg',
-                        desc: 'desc14',
-                        price: '100.00'
-                    }]
+            selected_list:[]
         }
     },
     async mounted() {
         if (JSON.parse(localStorage.getItem("cartQty"))) {
             this.cart_qty = JSON.parse(localStorage.getItem("cartQty"));
         }
-        // console.log(await this.getAllProducts());
-        console.log(this.products)
+
+        await this.getAllProducts();
+        console.log(this.products);
+
+        this.selected_list = this.products.filter(record => record.pcat == 'Blood Pressure Monitor');
     },
     computed: {
         ...mapGetters(['products'])
     },
     methods: {
-        // ...mapActions(['getAllProducts']),
+        ...mapActions(['getAllProducts']),
         changeView(selectedView) {
-            this.selected_list = this.product_list[selectedView + '_list'];
+            this.selected_list = this.products.filter(record => record.pcat == selectedView)
             console.log(this.selected_list);
         },
         sendPage(oneList) {

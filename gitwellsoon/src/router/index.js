@@ -9,8 +9,14 @@ import ShopProductPage from '../views/ShopProductPage.vue'
 import CartPage from '../views/CartPage.vue'
 import CartCheckoutPage from '../views/CartCheckoutPage.vue'
 import PaymentSuccessPage from '../views/PaymentSuccessPage.vue'
-import LoginPage from '../views/LoginPage.vue'
+import StaffLoginPage from '../views/StaffLoginPage.vue'
 import ProfilePage from '../views/ProfilePage.vue'
+import StaffLandingPage from '../views/StaffLandingPage.vue'
+import StaffSettingPageAdd from '../views/StaffSettingPageAdd.vue'
+
+import Register from '../views/Register.vue'
+
+
 
 import navBar from "../components/pageNavBar.vue"
 
@@ -52,7 +58,7 @@ const routes = [
       {
         path: '/login',
         name: 'Login',
-        component: LoginPage,
+        component: StaffLoginPage,
         meta: {requiredAuthorization: false}
       },
       {
@@ -77,6 +83,24 @@ const routes = [
         path: '/paymentSuccess',
         name: "Payment Success",
         component: PaymentSuccessPage,
+        meta: {requiredAuthorization: false}
+      },
+      {
+        path: '/StaffLandingPage',
+        name: "Staff Landing Page",
+        component: StaffLandingPage,
+        meta: {requiredAuthorization: false}
+      },
+      {
+        path: '/Register',
+        name: "Register",
+        component: Register,
+        meta: {requiredAuthorization: false}
+      },
+      {
+        path: '/StaffSettingPageAdd',
+        name: "Staff Setting Page Add",
+        component: StaffSettingPageAdd,
         meta: {requiredAuthorization: false}
       }
     ]

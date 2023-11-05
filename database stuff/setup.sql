@@ -65,4 +65,4 @@ FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\r\n' 
 IGNORE 1 ROWS
-(oid, email, pid, quantity);
+(oid, email, pid, quantity, status);

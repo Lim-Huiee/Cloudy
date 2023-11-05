@@ -33,6 +33,7 @@ CREATE TABLE `orders` (
     `email` VARCHAR(255) NOT NULL,
     `pid` INT NOT NULL,
     `quantity` INT NOT NULL,
+    `status` VARCHAR(255) NOT NULL,
     
     constraint orders_fk1 foreign key (email) references accounts(`email`) ON DELETE CASCADE ON UPDATE CASCADE,    
     constraint orders_fk2 foreign key (pid) references products(`pid`) ON DELETE CASCADE ON UPDATE CASCADE,    

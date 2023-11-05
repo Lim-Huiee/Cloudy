@@ -83,7 +83,7 @@
                                     <li><span>Shipping</span> <span>${{shippingMethod}}</span></li>
                                     <li><span><strong>Total</strong></span> <span><strong>${{final_price}}</strong></span></li>
                                 </ul>
-                                <router-link to="/cartCheckout">
+                                <router-link to="/UserLogin">
                                     <a class="btn karl-checkout-btn" @click="sendPage()">Proceed to checkout</a>
                                 </router-link>
                             </div>
@@ -107,7 +107,7 @@ export default {
             cart_item: [],
             total_price: 0,
             shippingMethod: 0,
-            final_price: 0
+            final_price: 0,
         }
     },
     async mounted() {
@@ -129,7 +129,7 @@ export default {
         }
     },
     methods: {
-         sendPage() {
+        sendPage() {
             localStorage.setItem("subtotal", this.total_price);
             localStorage.setItem("shipping", this.shippingMethod);
             localStorage.setItem("finaltotal", this.final_price);

@@ -4,7 +4,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import store from './store'
 import router from './router'
-import awsConfig from "./aws-exports"
+import awsConfig from "./aws-exports.js"
 import Auth from "@aws-amplify/auth"
 // import Auth from "aws-amplify"
 import "@aws-amplify/ui-vue/styles.css"

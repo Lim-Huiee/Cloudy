@@ -124,7 +124,11 @@ export default {
             cart_item: [],
             total_price: 0,
             shippingMethod: 0,
-            final_price: 0
+            final_price: 0,
+
+            paymentSuccessCode: 0,
+            emailRegisterCode: 0 
+
         }
     },
     async mounted() {
@@ -149,7 +153,7 @@ export default {
             .then((response) => response.json()) 
             .then(data => {
                 console.log(data);
-                return data.statusCode;
+                this.paymentSuccessCode = data.statusCode;
             })
             .catch(error => {
                 console.log(error);

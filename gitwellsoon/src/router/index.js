@@ -13,6 +13,8 @@ import StaffLoginPage from '../views/StaffLoginPage.vue'
 import ProfilePage from '../views/ProfilePage.vue'
 import StaffLandingPage from '../views/StaffLandingPage.vue'
 import StaffSettingPageAdd from '../views/StaffSettingPageAdd.vue'
+import UserLogin from '../views/UserLogin.vue'
+
 
 import Register from '../views/Register.vue'
 
@@ -101,6 +103,12 @@ const routes = [
         path: '/StaffSettingPageAdd',
         name: "Staff Setting Page Add",
         component: StaffSettingPageAdd,
+        meta: {requiredAuthorization: false}
+      },
+      {
+        path: '/UserLogin',
+        name: "User Login",
+        component: UserLogin,
         meta: {requiredAuthorization: false}
       }
     ]

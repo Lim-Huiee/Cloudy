@@ -49,18 +49,44 @@ const store = createStore({
         console.log(error);
       }
     },
-    async deleteProduct({commit}, payload) {
+    async deleteProduct(_, payload) {
       try {
         await fetch({
           method: 'DELETE',
-          url: 'delete_product',
+          url: '/delete_product',
           data: payload
         })
         commit('setToastrResponse', {isError: false, msg: 'Product has been deleted!'}, {root: true});
       } catch (error) {
           console.log(error);
       }
-  },
+    },
+    async getAllUser({commit}) {
+      try { 
+        commit('setLoader', true);
+        const {data: {data: products}} = await fetch({
+          method: 'GET',
+          url: 'product_list'
+        })
+        
+        commit('setProducts', products);
+        commit('setLoader', false);
+        
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async createUserAccount(_,payload) {
+      try { 
+        await fetch({
+          method: 'POST',
+          url: '/create_account',
+          data: payload
+        })
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
   modules: {},
   plugins: []

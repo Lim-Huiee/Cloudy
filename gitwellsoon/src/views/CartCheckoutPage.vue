@@ -58,7 +58,7 @@
                             <ul class="order-details-form mb-4">
                                 <li class="bg-info px-3"><span><strong>Product</strong></span> <span><strong>Total</strong></span></li>
                                 <li v-for="oneItem in cart_item" class="px-3">
-                                    <span>{{oneItem.productName}}</span> <span>${{oneItem.total_item_price}}</span>
+                                    <span>{{oneItem.pname}}</span> <span>${{oneItem.total_item_price}}</span>
                                 </li>
                                 <li class="bg-info px-3"><span>Subtotal</span> <span>${{total_price}}</span></li>
                                 <li class="bg-info px-3"><span>Shipping</span> <span>${{shippingMethod}}</span></li>

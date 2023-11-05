@@ -57,12 +57,14 @@ class Products(db.Model):
 
 class Orders(db.Model):
     __tablename__ = "orders"
-    def __init__(self, email, pid, quantity):
+    def __init__(self, email, pid, quantity, status):
         self.email = email
         self.pid = pid
         self.quantity = quantity
+        self.status = status
 
     oid = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(255), db.ForeignKey('accounts.email'),nullable=False)  
     pid = db.Column(db.Integer, db.ForeignKey('products.pid'), nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
+    status = db.Column(db.String(255), nullable=False)

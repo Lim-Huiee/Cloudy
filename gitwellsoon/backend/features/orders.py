@@ -13,7 +13,8 @@ def get_all_orders():
                 'oid': order.oid,
                 'email': order.email,
                 'pid': order.pid,
-                'quantity': order.quantity
+                'quantity': order.quantity,
+                'status': order.status
             }
 
             orders_list.append(order_obj)

@@ -10,13 +10,15 @@
                             <th>Email</th>
                             <th>Product ID</th>
                             <th>Quantity</th>
+                            <th>Status</th>
                         </tr>
                         <tr v-for="(each, index) in this.orders" :key="each">
                             <td>{{ each.oid }}</td>
                             <td>{{ each.email }}</td>
                             <td>{{ each.pid }}</td>
                             <td>{{ each.quantity }}</td>
-                            <td><button type="btn btn-success" @click="completeOrder(each)">Complete</button></td>
+                            <td>{{ each.status }}</td>
+                            <td><button type="btn btn-success" @click="editOrderStatus(each)">Complete</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -47,8 +49,8 @@ export default {
     methods: {
         ...mapActions(['getAllOrders']),
         ...mapMutations(),
-        completeOrder() {
-            
+        editOrderStatus() {
+
         }
     }
 }

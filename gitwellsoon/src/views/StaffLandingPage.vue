@@ -8,6 +8,9 @@
                         <router-link to="/StaffSettingPageAdd" class="nav-link text-decoration-none">
                             <button type="button" class="btn btn-success" @click="attachModalData('New')">Add</button>
                         </router-link>
+                        <router-link to="/stafforderPage" class="nav-link text-decoration-none mx-5">
+                            <button type="button" class="btn btn-success">Go to order page</button>
+                        </router-link>
                     </div>
                 </div>
                 <table class="table mt-3">

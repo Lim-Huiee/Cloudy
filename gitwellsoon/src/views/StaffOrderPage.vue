@@ -2,6 +2,13 @@
 
     <div class="container">
         <h1 class="pt-4 mb-4 fw-bolder mainPageTitle">Orders List</h1>
+        <div>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <router-link to="/StaffLandingPage" class="nav-link text-decoration-none">
+                    <button type="button" class="btn btn-success">Go to product list page</button>
+                </router-link>
+            </div>
+        </div>
         <div class="row">
                 <table class="table mt-3">
                     <tbody>

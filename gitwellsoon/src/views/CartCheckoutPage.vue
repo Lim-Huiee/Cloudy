@@ -33,19 +33,6 @@
                                     <div class="col-12 mb-3">
                                         <label for="street_address">Address <span>*</span></label>
                                         <input type="text" class="form-control mb-3" id="street_address" value="">
-                                        <input type="text" class="form-control" id="street_address2" value="">
-                                    </div>
-                                    <div class="col-12 mb-3">
-                                        <label for="postcode">Postcode <span>*</span></label>
-                                        <input type="text" class="form-control" id="postcode" value="">
-                                    </div>
-                                    <div class="col-12 mb-3">
-                                        <label for="city">Town/City <span>*</span></label>
-                                        <input type="text" class="form-control" id="city" value="">
-                                    </div>
-                                    <div class="col-12 mb-3">
-                                        <label for="state">Province <span>*</span></label>
-                                        <input type="text" class="form-control" id="state" value="">
                                     </div>
                                     <div class="col-12 mb-3">
                                         <label for="phone_number">Phone No <span>*</span></label>
@@ -80,14 +67,6 @@
 
 
                             <div id="accordion" role="tablist" class="mb-4">
-                                <div class="card">
-                                    <div class="card-header" role="tab" id="headingTwo">
-                                        <h6 class="mb-0">
-                                            <input type="radio" id="cd" name="payment" value="cd">
-                                            <label for="cd" class="ms-3">Cash on Delivery</label><br>
-                                        </h6>
-                                    </div>
-                                </div>
                                 <div class="card">
                                     <div class="card-header" role="tab" id="headingThree">
                                         <h6 class="mb-0">

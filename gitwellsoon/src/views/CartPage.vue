@@ -22,7 +22,7 @@
                                         <tr v-for="oneItem in cart_item">
                                             <td class="cart_product_img d-flex align-items-center">
                                                 <a href="#"><img :src="oneItem.image" alt="Product" style="width:100%;"></a>
-                                                <h6>{{oneItem.productName}}</h6>
+                                                <h6>{{oneItem.pname}}</h6>
                                             </td>
                                             <td class="price"><span>{{oneItem.price}}</span></td>
                                             <td class="qty">

@@ -92,33 +92,37 @@ export default {
             //create account
             let res = await this.createUserAccount({'username': this.userName, 'email': this.userEmail, 'password': this.userPassword});
             console.log(res);
-
-            if (res.code == 200) {
-                //trigger Email
-                var bodyJSON = JSON.stringify({
-                    email: this.userEmail
-                })
-    
-                const response = fetch('https://t5koenoe6ciiufp4cimt34cng40imejk.lambda-url.ap-southeast-1.on.aws/', {
-                    method: "POST",
-                    body: bodyJSON,
-                    headers: {
-                        "Content-type": "application/json"
-                    }
-                })
-                .then((response) => response.json()) 
-                .then(data => {
-                    console.log(data);
-                    this.emailTriggerSuccessCode = data.statusCode;
-                })
-                .catch(error => {
-                    console.log(error);
-                })
-    
-                console.log(this.emailTriggerSuccessCode);
-                //router push
-                // this.$router.push('/cartCheckout')
-                localStorage.setItem("email", this.userEmail)
+            try {
+                if (res.code == 200) {
+                    //trigger Email
+                    var bodyJSON = JSON.stringify({
+                        email: this.userEmail
+                    })
+        
+                    const response = fetch('https://t5koenoe6ciiufp4cimt34cng40imejk.lambda-url.ap-southeast-1.on.aws/', {
+                        method: "POST",
+                        body: bodyJSON,
+                        headers: {
+                            "Content-type": "application/json"
+                        }
+                    })
+                    .then((response) => response.json()) 
+                    .then(data => {
+                        console.log(data);
+                        this.emailTriggerSuccessCode = data.statusCode;
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+        
+                    console.log(this.emailTriggerSuccessCode);
+                    //router push
+                    this.$router.push('/cartCheckout')
+                    localStorage.setItem("email", this.userEmail)
+                }
+            } catch(err) {
+                console.log(err)
+                alert("Email is already registered!")
             }
         },
         async login() {

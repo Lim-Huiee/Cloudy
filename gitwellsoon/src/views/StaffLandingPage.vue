@@ -73,8 +73,8 @@ export default {
             console.log(this.modalData);
         },
         editProduct(details) {
-            
-            
+            localStorage.setItem("editProductDetails", JSON.stringify(details));
+            this.$router.push('/editProduct');
         },
         async removeProduct(details) {
             console.log(details)

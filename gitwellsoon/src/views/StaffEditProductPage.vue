@@ -1,15 +1,16 @@
 <template>
     <div class="position-relative">
         <div class="container-fluid">
-            <h1>
-                Add New Product
-            </h1>
+            <div class="container">
+                <h1>
+                    Edit Product
+                </h1>
+            </div>
 
             <form class="container">
                 <div class="row input-field mt-2">
                     <label for="pcat">Product Category:</label>
-
-                    <select name="pcat" id="pcat" v-model="formFields.pcat" >
+                    <select class="form-select" aria-label="Default select example" v-model="formFields.pcat">
                         <option value="Bandage">Bandage</option>
                         <option value="Blood Pressure Monitor">Blood Pressure Monitor</option>
                         <option value="Face Mask">Face Mask</option>
@@ -78,7 +79,7 @@
                     <button class="btn btn-secondary mx-2" onclick="history.back()">
                         <span>Back </span>
                     </button>
-                    <button class="btn btn-success mx-2" @click="addProduct()">
+                    <button class="btn btn-success mx-2" @click="editProduct()">
                         <span>Save </span>
                         <i class="bi bi-save2"></i>
                     </button>
@@ -91,7 +92,7 @@
 import { mapActions, mapMutations, mapGetters } from "vuex";
 
 export default {
-    name: "Add",
+    name: "Edit",
     components: {
     },
     data(){
@@ -114,24 +115,24 @@ export default {
     },
     async mounted() {
         await this.getAllProducts()
+
+        this.formFields = JSON.parse(localStorage.getItem("editProductDetails"));
+        console.log(this.formFields);
     },
     computed: {
         ...mapGetters(['products'])
     },
     methods: {
-        ...mapActions(['getAllProducts', 'createProduct']),
-        validateFields(details){
-
-        },
-        validateMCR(details) {
-
-        },
-        async addProduct(){
+        ...mapActions(['getAllProducts', 'updateProduct']),
+        async editProduct(){
             console.log(this.formFields);
-            await this.createProduct(this.formFields);
-
-            this.$router.push('/StaffLandingPage');
-
+            let res = await this.updateProduct(this.formFields);
+            console.log(res);
+            if (res.code == 200) {
+                this.$router.push('/StaffLandingPage');
+            } else {
+                alert("There was an error! Please try again!")
+            }
         }
     },
 }

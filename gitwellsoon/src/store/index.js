@@ -55,6 +55,18 @@ const store = createStore({
         console.log(error);
       }
     },
+    async updateProduct(_,payload) {
+      try {
+        let res = await fetch({
+          method: 'PUT',
+          url: '/update_product',
+          data: payload
+        })
+        return res.data;
+      } catch(error) {
+        console.log(error);
+      }
+    },
     async deleteProduct(_, payload) {
       try {
         let res = await fetch({
@@ -132,7 +144,19 @@ const store = createStore({
       } catch(error) {
         console.log(error);
       }
-    }
+    },
+    async updateOrder(_,payload) {
+      try {
+        let res = await fetch({
+          method: 'PUT',
+          url: '/update_order',
+          data: payload
+        })
+        return res.data;
+      } catch(error) {
+        console.log(error);
+      }
+    },
   },
   modules: {},
   plugins: []

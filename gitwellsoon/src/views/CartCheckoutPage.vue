@@ -159,7 +159,7 @@ export default {
  
             for (let i = 0; i < this.cart_item.length; i++) {
                 var oneItem = this.cart_item[i]
-                let orderRes = await this.createOrder({'pid': oneItem.pid, 'email': this.userEmail, 'quantity': oneItem.qty});
+                let orderRes = await this.createOrder({'pid': oneItem.pid, 'email': this.userEmail, 'quantity': oneItem.qty, 'status': 'new'});
                 console.log(orderRes)
             }
             

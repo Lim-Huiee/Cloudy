@@ -79,12 +79,6 @@ export default {
             defaultView: "createAccount"
         }
     },
-    async mounted() {
-
-    },
-    computed: {
-
-    },
     methods: {
         ...mapActions(['createUserAccount', 'logIn']),
         ChangeView() {
@@ -99,7 +93,7 @@ export default {
             let res = await this.createUserAccount({'username': this.userName, 'email': this.userEmail, 'password': this.userPassword});
             console.log(res);
 
-            if (res.statusCode == 200) {
+            if (res.code == 200) {
                 //trigger Email
                 var bodyJSON = JSON.stringify({
                     email: this.userEmail
@@ -122,9 +116,8 @@ export default {
                 })
     
                 console.log(this.emailTriggerSuccessCode);
-    
                 //router push
-                this.$router.push('/cartCheckout')
+                // this.$router.push('/cartCheckout')
                 localStorage.setItem("email", this.userEmail)
             }
         },
@@ -133,13 +126,22 @@ export default {
 
             let res = await this.logIn({'email': this.userEmail, 'password': this.userPassword});
             console.log(res)
-            if (res.code == 200) {
-                //router push
-                this.$router.push('/cartCheckout')
 
-                localStorage.setItem("email", res.email)
+            try {
+                if (res.code == 200) {
+                    //router push
+                    this.$router.push('/cartCheckout')
+    
+                    localStorage.setItem("email", res.email)
+                } else {
+                    console.log(res.message)
+                }
+            } catch(err) {
+                console.log(err)
+                alert("Incorrect email or password, please try again!")
             }
+
         }
-    },
+    }
 }
 </script>

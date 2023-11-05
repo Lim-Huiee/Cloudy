@@ -18,7 +18,7 @@
                             <td>{{ each.pid }}</td>
                             <td>{{ each.quantity }}</td>
                             <td>{{ each.status }}</td>
-                            <td><button type="btn btn-success" @click="editOrderStatus(each)">Complete</button></td>
+                            <td><button type="btn btn-success" @click="editOrderStatus(each)">Edit</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -49,8 +49,9 @@ export default {
     methods: {
         ...mapActions(['getAllOrders']),
         ...mapMutations(),
-        editOrderStatus() {
-
+        editOrderStatus(details) {
+            localStorage.setItem("editOrderDetails", JSON.stringify(details));
+            this.$router.push('/editOrder');
         }
     }
 }

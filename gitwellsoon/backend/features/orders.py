@@ -31,6 +31,7 @@ def create_order():
         email = data.get('email')
         pid = data.get('pid')
         quantity = data.get('quantity')
+        status = data.get('status')
 
         if not data or not email or not pid or not quantity: 
             return jsonify({"code": 400, "message": "Invalid data"}), 400
@@ -38,7 +39,8 @@ def create_order():
         new_order = Orders(
             email=email, 
             pid=pid, 
-            quantity=quantity)
+            quantity=quantity,
+            status=status)
     
         db.session.add(new_order)
         db.session.commit()
@@ -48,36 +50,25 @@ def create_order():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-@orders_bp.route('/update_order', methods=['POST'])
+@orders_bp.route('/update_order', methods=['PUT'])
 def update_order():
-    pass
-
-# @appointment_bp.route('/update_appointment', methods=['PUT'])
-# def update_appointment():
-#     try:
-#         data = request.get_json()
-#         school = data.get('school')
-#         old_appointment = data.get('oldAppointment')
-#         new_appointment = data.get('newAppointment')
-#         new_rank_group = data.get('newRankGroup')
+    try:
+        data = request.get_json()
+        oid = data.get('oid')
+        status = data.get('status')
         
-#         if not data or not school or not old_appointment or not new_appointment:
-#             return jsonify({"code": 400, "message": "Invalid data"}), 400
+        if not data or not oid or not status:
+            return jsonify({"code": 400, "message": "Invalid data"}), 400
         
-#         appointment_name = Appointment.query.filter_by(school_name=school, appointment_name=old_appointment).first()
-#         if not appointment_name:
-#             return jsonify({ "code": 404, "message": "Appointment name not found"}), 404
+        order = Orders.query.filter_by(oid=oid).first()
+        if not order:
+            return jsonify({ "code": 404, "message": "Order not found"}), 404
 
-#         setattr(appointment_name, 'rank_group', new_rank_group)
-#         setattr(appointment_name, 'appointment_name', new_appointment)
+        setattr(order, 'oid', oid)
+        setattr(order, 'status', status)
 
-#         ClinicianSchoolAppointments = ClinicianSchoolAppointment.query.filter_by(school_name=school, appointment_name=old_appointment).all()
-#         for each in ClinicianSchoolAppointments:
-#             setattr(each, 'appointment_name', new_appointment)
+        db.session.commit()
+        return jsonify({"code": 200, "message": "Order upated successfully."}), 200
 
-#         db.session.commit()
-#         return jsonify({"code": 200, "message": f"Appointment name updated successfully from {old_appointment} to {new_appointment}"}), 200
-
-
-#     except Exception as e:
-#         return jsonify({'error': str(e)}), 500        
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500     

@@ -21,7 +21,7 @@ def login():
         if user and check_password_hash(user.password, password):
             return jsonify({"code": 200, "email": email}), 200 
 
-        return jsonify({ "code": 401, "message": "Incorrect username or password"}), 401
+        return jsonify({ "code": 401, "message": "incorrect email or password"}), 401
         
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -39,7 +39,7 @@ def createAccount():
         if user:
             return jsonify({"code": 409, "message": "User already exist"}), 409            
         
-        password_hash = generate_password_hash(password)
+        password_hash = generate_password_hash(password, "sha256")
 
         new_user = Accounts(
             username=username, 

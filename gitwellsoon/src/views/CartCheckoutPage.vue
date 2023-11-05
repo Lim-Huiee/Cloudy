@@ -115,6 +115,8 @@
 </template>
 
 <script>
+import { mapActions, mapGetters, mapMutations } from "vuex";
+
 export default {
     name: "CartPage",
     components: {
@@ -126,8 +128,9 @@ export default {
             shippingMethod: 0,
             final_price: 0,
 
-            paymentSuccessCode: 0,
-            emailRegisterCode: 0 
+            userEmail: "",
+
+            emailTriggerSuccessCode: 0 
 
         }
     },
@@ -137,27 +140,76 @@ export default {
         this.total_price = JSON.parse(localStorage.getItem("subtotal"));
         this.shippingMethod = JSON.parse(localStorage.getItem("shipping"));
         this.final_price = JSON.parse(localStorage.getItem("finaltotal"));
+
+        this.userEmail = localStorage.getItem("email");
     },
     computed: {
     },
     methods: {
+        ...mapActions(['createOrder']),
         sendPage(pid) {
             localStorage.setItem("selectedItem", pid);
         },
         tabulateFinalPrice() {
             this.final_price = this.total_price + this.shippingMethod;
         },
-        callTriggerPayment() {
+        async callTriggerPayment() {
+            //create orders in db
+            console.log(this.cart_item);
+ 
+            for (let i = 0; i < this.cart_item.length; i++) {
+                var oneItem = this.cart_item[i]
+                let orderRes = await this.createOrder({'pid': oneItem.pid, 'email': this.userEmail, 'quantity': oneItem.qty});
+                console.log(orderRes)
+            }
+            
+
+
+
+
             // TriggerPayment
             const response = fetch('https://uxgheebrgoi7mbz26szg7c6ffe0zpzyg.lambda-url.ap-southeast-1.on.aws/')
             .then((response) => response.json()) 
             .then(data => {
                 console.log(data);
-                this.paymentSuccessCode = data.statusCode;
+                if (data['statusCode'] == 200) {
+                    console.log(this.paymentSuccessCode)
+                    var bodyJSON = JSON.stringify({
+                                    userEmail: this.userEmail,
+                                    emailSubject: "Git Well Soon Purchase",
+                                    emailBody: "Purchase was successful!"
+                                })
+    
+                    const response = fetch('https://h54bsx4ar5iywpwfe5endxgj4m0bgubt.lambda-url.ap-southeast-1.on.aws/', {
+                        method: "POST",
+                        body: bodyJSON,
+                        headers: {
+                            "Content-type": "application/json"
+                        }
+                    })
+                    .then((response) => response.json()) 
+                    .then(data => {
+                        console.log(data);
+                        this.emailTriggerSuccessCode = data.statusCode;
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+    
+                    if (this.emailTriggerSuccessCode == 200) {
+                        this.$router.push('/paymentSuccess');
+                    } else {
+                        console.log("Please try again!");
+                    }
+                }
             })
             .catch(error => {
                 console.log(error);
             })
+
+            if (this.emailTriggerSuccessCode==200) {
+
+            }
         },
         // TriggerPayment
         // https://uxgheebrgoi7mbz26szg7c6ffe0zpzyg.lambda-url.ap-southeast-1.on.aws/

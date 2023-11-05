@@ -90,7 +90,7 @@
                 <div class="row">
                     <div class="col-12 col-md-4 mb-4">
                         <div class="card h-100">
-                            <a href="shop-single.html">
+                            <a>
                                 <img src="../assets/Product Data/glove5.jpeg" class="card-img-top" alt="...">
                             </a>
                             <div class="card-body">
@@ -104,7 +104,7 @@
                                     </li>
                                     <li class="text-muted text-right">$5.00</li>
                                 </ul>
-                                <a href="shop-single.html" class="h2 text-decoration-none text-dark">Nitrile Gloves</a>
+                                <a class="h2 text-decoration-none text-dark">Nitrile Gloves</a>
                                 <p class="card-text">
                                     Crafted with precision and care, Nitrile gloves are the ideal choice for a variety of applications, from medical procedures to everyday tasks. 
                                     Discover superior quality and reliability with every pair.
@@ -115,7 +115,7 @@
                     </div>
                     <div class="col-12 col-md-4 mb-4">
                         <div class="card h-100">
-                            <a href="shop-single.html">
+                            <a>
                                 <img src="../assets/Product Data/wc6.jpeg" class="card-img-top" alt="...">
                             </a>
                             <div class="card-body">
@@ -129,7 +129,7 @@
                                     </li>
                                     <li class="text-muted text-right">$480.00</li>
                                 </ul>
-                                <a href="shop-single.html" class="h2 text-decoration-none text-dark">SJAPEX Wheelchair</a>
+                                <a class="h2 text-decoration-none text-dark">SJAPEX Wheelchair</a>
                                 <p class="card-text">
                                     Experience enhanced mobility and comfort with our thoughtfully designed wheelchairs, perfect for short-term recovery or long-term use.
                                 </p>
@@ -139,7 +139,7 @@
                     </div>
                     <div class="col-12 col-md-4 mb-4">
                         <div class="card h-100">
-                            <a href="shop-single.html">
+                            <a>
                                 <img src="../assets/Product Data/fak2.jpeg" class="card-img-top" alt="...">
                             </a>
                             <div class="card-body">

@@ -6,17 +6,23 @@ const store = createStore({
     return {
       token: "",
       products: [],
+      orders:[],
       toastrResponse: {},
       isLoading: false
     }
   },
   getters: {
     isLoading: state => state.isLoading,
-    products: state => state.products
+    products: state => state.products,
+    orders: state => state.orders
+
   },
   mutations: {
     setProducts(state, products) {
       state.products = products;
+    },
+    setOrders(state, orders) {
+      state.orders = orders;
     },
     setLoader(state, isLoading) {
       state.isLoading = isLoading;
@@ -51,12 +57,13 @@ const store = createStore({
     },
     async deleteProduct(_, payload) {
       try {
-        await fetch({
+        let res = await fetch({
           method: 'DELETE',
           url: '/delete_product',
           data: payload
         })
-        commit('setToastrResponse', {isError: false, msg: 'Product has been deleted!'}, {root: true});
+        return res.data;
+        // commit('setToastrResponse', {isError: false, msg: 'Product has been deleted!'}, {root: true});
       } catch (error) {
           console.log(error);
       }
@@ -78,15 +85,54 @@ const store = createStore({
     },
     async createUserAccount(_,payload) {
       try { 
-        await fetch({
+        let res = await fetch({
           method: 'POST',
           url: '/create_account',
           data: payload
         })
+        return res.data;
       } catch (error) {
         console.log(error);
       }
     },
+    async logIn(_,payload) {
+      try {
+        let res = await fetch({
+          method: 'POST',
+          url: '/login',
+          data: payload
+        })
+        return res.data;
+      } catch(error) {
+        console.log(error);
+      }
+    },
+    async getAllOrders({commit}) {
+      try { 
+        commit('setLoader', true);
+        const {data: {data: orders}} = await fetch({
+          method: 'GET',
+          url: 'order_list'
+        })
+        
+        commit('setOrders', orders);
+        commit('setLoader', false);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async createOrder(_,payload) {
+      try {
+        let res = await fetch({
+          method: 'POST',
+          url: '/create_order',
+          data: payload
+        })
+        return res.data;
+      } catch(error) {
+        console.log(error);
+      }
+    }
   },
   modules: {},
   plugins: []

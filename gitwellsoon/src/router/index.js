@@ -14,11 +14,9 @@ import ProfilePage from '../views/ProfilePage.vue'
 import StaffLandingPage from '../views/StaffLandingPage.vue'
 import StaffSettingPageAdd from '../views/StaffSettingPageAdd.vue'
 import UserLogin from '../views/UserLogin.vue'
-
+import StaffOrderPage from '../views/StaffOrderPage.vue'
 
 import Register from '../views/Register.vue'
-
-
 
 import navBar from "../components/pageNavBar.vue"
 
@@ -109,6 +107,12 @@ const routes = [
         path: '/UserLogin',
         name: "User Login",
         component: UserLogin,
+        meta: {requiredAuthorization: false}
+      },
+      {
+        path: '/StaffOrderPage',
+        name: "Staff Order Page",
+        component: StaffOrderPage,
         meta: {requiredAuthorization: false}
       }
     ]

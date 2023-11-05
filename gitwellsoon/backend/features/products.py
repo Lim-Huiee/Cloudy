@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
-# from classes import db, Products
-from test import db, Products
+from classes import db, Products
+# from test import db, Products
 
 products_bp = Blueprint('products_bp', __name__)
 
@@ -96,12 +96,8 @@ def delete_product():
     try:
         data = request.get_json()
         pid = data.get('pid')
-        pcat = data.get('pcat')
-        pname = data.get('pname')
-        pprice = data.get('pprice')
-        pstock = data.get('stock')
         
-        if not data or not pcat or not pname or not pprice or not pstock: 
+        if not data or not pid: 
             return jsonify({"code": 400, "message": "Invalid data"}), 400
         
         product = Products.query.filter_by(pid=pid).first()

@@ -57,8 +57,7 @@ class Products(db.Model):
 
 class Orders(db.Model):
     __tablename__ = "orders"
-    def __init__(self, oid, email, pid, quantity):
-        self.oid = oid
+    def __init__(self, email, pid, quantity):
         self.email = email
         self.pid = pid
         self.quantity = quantity

@@ -24,7 +24,7 @@ export default {
         }
     },
     async mounted() {
-       const refreshTimer = document.getElementById('refresh-timer');
+        const refreshTimer = document.getElementById('refresh-timer');
 
         let timerInSeconds = 5;
 
@@ -32,6 +32,8 @@ export default {
         timerInSeconds -= 1;
 
         refreshTimer.innerHTML = `Refreshing page in: ${timerInSeconds} seconds`;
+        
+        localStorage.clear();
 
         if (timerInSeconds == 0) {
             window.location.href = '/';

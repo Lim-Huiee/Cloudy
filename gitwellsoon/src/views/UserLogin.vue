@@ -98,7 +98,7 @@ export default {
                         email: this.userEmail
                     })
                     // ================ TriggerRegisterEmail Lambda ================
-                    const response = fetch('https://wp73m3f9b5.execute-api.ap-southeast-1.amazonaws.com/beta/', {
+                    const response = fetch('https://27npsn2kfe.execute-api.ap-southeast-1.amazonaws.com/beta', {
                         method: "POST",
                         body: bodyJSON,
                         headers: {

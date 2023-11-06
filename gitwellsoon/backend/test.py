@@ -75,8 +75,7 @@ class Products(db.Model):
 
 class Orders(db.Model):
     __tablename__ = "orders"
-    def __init__(self, oid, email, pid, quantity, status):
-        self.oid = oid
+    def __init__(self, email, pid, quantity, status):
         self.email = email
         self.pid = pid
         self.quantity = quantity
@@ -86,6 +85,8 @@ class Orders(db.Model):
     email = db.Column(db.String(255), db.ForeignKey('accounts.email'),nullable=False)  
     pid = db.Column(db.Integer, db.ForeignKey('products.pid'), nullable=False)
     quantity = db.Column(db.Integer, nullable=False)
+    status = db.Column(db.String(255), nullable=False)
+
 
 #ACCOUNTS
 @app.route('/accounts', methods=['GET'])
@@ -262,76 +263,79 @@ def delete_product():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-#ORDERS 
-# @app.route('/order_list', methods=['GET'])
-# def get_all_orders():
-#     try:
-#         orders = Orders.query.all()
-#         orders_list = []
-#         for order in orders:
-#             order_obj = {
-#                 'oid': order.oid,
-#                 'email': order.email,
-#                 'pid': order.pid,
-#                 'quantity': order.quantity,
-#                 'status': order.status
-#             }
+# ORDERS 
+@app.route('/order_list', methods=['GET'])
+def get_all_orders():
+    try:
+        orders = Orders.query.all()
+        orders_list = []
+        for order in orders:
+            order_obj = {
+                'oid': order.oid,
+                'email': order.email,
+                'pid': order.pid,
+                'quantity': order.quantity,
+                'status': order.status
+            }
 
-#             orders_list.append(order_obj)
+            orders_list.append(order_obj)
         
-#         return jsonify({"code": 200, "data": orders_list}), 200
+        return jsonify({"code": 200, "data": orders_list}), 200
     
-#     except Exception as e:
-#         return jsonify({'error': str(e)}), 500
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
     
-# @app.route('/create_order', methods=['POST'])
-# def create_order():
-#     try: 
-#         data = request.get_json()
-#         email = data.get('email')
-#         pid = data.get('pid')
-#         quantity = data.get('quantity')
-#         status = data.get('status')
+@app.route('/create_order', methods=['POST'])
+def create_order():
+    try: 
+        data = request.get_json()
+        email = data.get('email')
+        pid = data.get('pid')
+        quantity = data.get('quantity')
+        status = data.get('status')
 
-#         if not data or not email or not pid or not quantity: 
-#             return jsonify({"code": 400, "message": "Invalid data"}), 400
+        if not data or not email or not pid or not quantity: 
+            return jsonify({"code": 400, "message": "Invalid data"}), 400
         
-#         new_order = Orders(
-#             email=email, 
-#             pid=pid, 
-#             quantity=quantity,
-#             status=status)
+        new_order = Orders(
+            email=email, 
+            pid=pid, 
+            quantity=quantity,
+            status=status)
     
-#         db.session.add(new_order)
-#         db.session.commit()
+        db.session.add(new_order)
+        db.session.commit()
 
-#         return jsonify({"code": 201, "order_created": "Successfully created orders"}), 201
+        #retrieve orderID
+        order = Orders.query.filter_by(email=email, pid=pid, quantity=quantity, status=status).order_by(Orders.oid.desc()).first()
+
+        return jsonify({"code": 201, "order_id": f'{order.oid}'}), 201
     
-#     except Exception as e:
-#         return jsonify({'error': str(e)}), 500
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
-# @app.route('/update_order', methods=['PUT'])
-# def update_order():
-#     try:
-#         data = request.get_json()
-#         oid = data.get('oid')
-#         status = data.get('status')
+@app.route('/update_order', methods=['PUT'])
+def update_order():
+    try:
+        data = request.get_json()
+        oid = data.get('oid')
+        status = data.get('status')
         
-#         if not data or not oid or not status:
-#             return jsonify({"code": 400, "message": "Invalid data"}), 400
+        if not data or not oid or not status:
+            return jsonify({"code": 400, "message": "Invalid data"}), 400
         
-#         order = Orders.query.filter_by(oid=oid).first()
-#         if not order:
-#             return jsonify({ "code": 404, "message": "Order not found"}), 404
+        order = Orders.query.filter_by(oid=oid).first()
+        if not order:
+            return jsonify({ "code": 404, "message": "Order not found"}), 404
 
-#         setattr(order, 'oid', oid)
-#         setattr(order, 'status', status)
+        setattr(order, 'oid', oid)
+        setattr(order, 'status', status)
 
-#         db.session.commit()
-#         return jsonify({"code": 200, "message": "Order upated successfully."}), 200
+        db.session.commit()
+        return jsonify({"code": 200, "message": "Order updated successfully."}), 200
 
-#     except Exception as e:
-#         return jsonify({'error': str(e)}), 500     
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500  
 
 
 if __name__ == '__main__':

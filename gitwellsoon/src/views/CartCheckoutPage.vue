@@ -117,7 +117,7 @@ export default {
         }
     },
     async mounted() {
-       this.cart_item = JSON.parse(localStorage.getItem("cartItem"));
+        this.cart_item = JSON.parse(localStorage.getItem("cartItem"));
 
         this.total_price = JSON.parse(localStorage.getItem("subtotal"));
         this.shippingMethod = JSON.parse(localStorage.getItem("shipping"));

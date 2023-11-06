@@ -13,10 +13,13 @@ import StaffLoginPage from '../views/StaffLoginPage.vue'
 import ProfilePage from '../views/ProfilePage.vue'
 import StaffLandingPage from '../views/StaffLandingPage.vue'
 import StaffSettingPageAdd from '../views/StaffSettingPageAdd.vue'
+import UserLogin from '../views/UserLogin.vue'
+import StaffOrderPage from '../views/StaffOrderPage.vue'
+import StaffEditProductPage from '../views/StaffEditProductPage.vue'
+import StaffEditOrderPage from '../views/StaffEditOrderPage.vue'
+
 
 import Register from '../views/Register.vue'
-
-
 
 import navBar from "../components/pageNavBar.vue"
 
@@ -102,7 +105,35 @@ const routes = [
         name: "Staff Setting Page Add",
         component: StaffSettingPageAdd,
         meta: {requiredAuthorization: false}
+      },
+      {
+        path: '/UserLogin',
+        name: "User Login",
+        component: UserLogin,
+        meta: {requiredAuthorization: false}
+      },
+      {
+        path: '/StaffOrderPage',
+        name: "Staff Order Page",
+        component: StaffOrderPage,
+        meta: {requiredAuthorization: false}
+      },
+      {
+        path: '/editProduct',
+        name: "Staff Edit Product",
+        component: StaffEditProductPage,
+        meta: {requiredAuthorization: false}
+      },
+      {
+        path: '/editOrder',
+        name: "Staff Edit Order",
+        component: StaffEditOrderPage,
+        meta: {requiredAuthorization: false}
       }
+
+
+
+      
     ]
   }
 

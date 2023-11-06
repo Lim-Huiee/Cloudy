@@ -33,16 +33,16 @@ CREATE TABLE `orders` (
     `email` VARCHAR(255) NOT NULL,
     `pid` INT NOT NULL,
     `quantity` INT NOT NULL,
+    `status` VARCHAR(255) NOT NULL,
     
-    constraint orders_fk1 foreign key (email) references ACCOUNTS(`email`) ON DELETE CASCADE ON UPDATE CASCADE,    
-    constraint orders_fk2 foreign key (pid) references PRODUCTS(`pid`) ON DELETE CASCADE ON UPDATE CASCADE,    
+    constraint orders_fk1 foreign key (email) references accounts(`email`) ON DELETE CASCADE ON UPDATE CASCADE,    
+    constraint orders_fk2 foreign key (pid) references products(`pid`) ON DELETE CASCADE ON UPDATE CASCADE,    
 
     PRIMARY KEY (`oid`)
 );
 
--- import gitwellsoon login table
-LOAD DATA INFILE 'C:/wamp64/tmp/gitwellsoon_login.csv'  -- replace with the directory where your csv is located
-INTO TABLE ACCOUNTS 
+LOAD DATA LOCAL INFILE '/Applications/MAMP/htdocs/gitwellsoon_login.csv'  -- replace with the directory where your csv is located
+INTO TABLE accounts 
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
 LINES TERMINATED BY '\r\n' 
@@ -50,8 +50,8 @@ IGNORE 1 ROWS
 (username, password, email);
 
 -- import gitwellsoon products table
-LOAD DATA INFILE 'C:/wamp64/tmp/gitwellsoon_products.csv'  -- replace with the directory where your csv is located
-INTO TABLE PRODUCTS 
+LOAD DATA LOCAL INFILE '/Applications/MAMP/htdocs/gitwellsoon_products.csv'  -- replace with the directory where your csv is located
+INTO TABLE products 
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
 LINES TERMINATED BY '\r\n' 
@@ -59,12 +59,10 @@ IGNORE 1 ROWS
 (pid, pcat, pname, pdesc, pprice, img_src, stock, prod_date, expiry_date);
 
 -- import gitwellsoon orders table
-LOAD DATA INFILE 'C:/wamp64/tmp/gitwellsoon_orders.csv'  -- replace with the directory where your csv is located
-INTO TABLE ORDERS 
+LOAD DATA LOCAL INFILE '/Applications/MAMP/htdocs/gitwellsoon_orders.csv'  -- replace with the directory where your csv is located
+INTO TABLE orders 
 FIELDS TERMINATED BY ',' 
 ENCLOSED BY '"'
 LINES TERMINATED BY '\r\n' 
 IGNORE 1 ROWS
-(oid, email, pid, quantity);
-
-
+(oid, email, pid, quantity, status);

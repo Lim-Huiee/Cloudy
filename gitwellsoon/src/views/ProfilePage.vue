@@ -14,7 +14,6 @@
 
                         <ul class="order-details-form mb-4" style="padding-left:0px">
                             <li class="bg-info px-3" @click="changeView('trackOrder')" style="cursor:pointer;"><span>Track Order</span></li>
-                            <li class="bg-info px-3" @click="changeView('transHist')" style="cursor:pointer;"><span>Transaction History</span> </li>
                             <li class="bg-info px-3" @click="changeView('profile')" style="cursor:pointer;"><span>Manage Profile</span></li>
                         </ul>
                     </div>
@@ -46,19 +45,6 @@
                                 <div class="col-12 mb-3">
                                     <label for="street_address">Address <span>*</span></label>
                                     <input type="text" class="form-control mb-3" id="street_address" value=""  :disabled="!edit">
-                                    <input type="text" class="form-control" id="street_address2" value=""  :disabled="!edit">
-                                </div>
-                                <div class="col-12 mb-3">
-                                    <label for="postcode">Postcode <span>*</span></label>
-                                    <input type="text" class="form-control" id="postcode" value=""  :disabled="!edit">
-                                </div>
-                                <div class="col-12 mb-3">
-                                    <label for="city">Town/City <span>*</span></label>
-                                    <input type="text" class="form-control" id="city" value="" :disabled="!edit">
-                                </div>
-                                <div class="col-12 mb-3">
-                                    <label for="state">Province <span>*</span></label>
-                                    <input type="text" class="form-control" id="state" value="" :disabled="!edit">
                                 </div>
                                 <div class="col-12 mb-3">
                                     <label for="phone_number">Phone No <span>*</span></label>
@@ -77,16 +63,7 @@
                         </form>
                     </div>
                 </div>
-            
-                <div class="col-8" v-if="view === 'transHist'">
-                    <div class="checkout_details_area mt-50 clearfix">
-            
-                        <div class="cart-page-heading text-center">
-                            <h5>Transaction history</h5>
-                        </div>
-                    </div>
-
-                </div>
+        
 
                 <div class="col-8" v-if="view === 'trackOrder'">
                     <div class="checkout_details_area mt-50 clearfix">
@@ -94,6 +71,29 @@
                         <div class="cart-page-heading text-center">
                             <h5>Track order</h5>
                         </div>
+
+                        <div class="row">
+                            <table class="table mt-3">
+                                <tbody>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Email</th>
+                                        <th>Product ID</th>
+                                        <th>Quantity</th>
+                                        <th>Status</th>
+                                    </tr>
+                                    <tr v-for="(each, index) in this.orders" :key="each">
+                                        <td>{{ each.oid }}</td>
+                                        <td>{{ each.email }}</td>
+                                        <td>{{ each.pid }}</td>
+                                        <td>{{ each.quantity }}</td>
+                                        <td>{{ each.status }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -102,6 +102,8 @@
 </template>
 
 <script>
+import { mapActions, mapGetters, mapMutations } from "vuex";
+
 export default {
     name: "CartPage",
     components: {
@@ -109,14 +111,20 @@ export default {
     data(){
         return {
             view: 'profile',
-            edit: false
+            edit: false,
+            userOrder: []
         }
     },
     async mounted() {
+        await this.getAllOrders();
+        this.userOrder = this.orders.filter((order) => order.email == localStorage.getItem("email"))
+        console.log(this.userOrder)
     },
     computed: {
+        ...mapGetters(['orders']),
     },
     methods: {
+        ...mapActions(['getAllOrders']),
         editField() {
             this.edit = !this.edit; 
         },

@@ -8,12 +8,15 @@
                         <router-link to="/StaffSettingPageAdd" class="nav-link text-decoration-none">
                             <button type="button" class="btn btn-success" @click="attachModalData('New')">Add</button>
                         </router-link>
+                        <router-link to="/stafforderPage" class="nav-link text-decoration-none mx-5">
+                            <button type="button" class="btn btn-success">Go to order page</button>
+                        </router-link>
                     </div>
                 </div>
                 <table class="table mt-3">
                     <tbody>
                         <tr>
-                            <th>S/N</th>
+                            <th>Product ID</th>
                             <th>Name</th>
                             <th>Category</th>
                             <th>Description</th>
@@ -26,7 +29,7 @@
                             <th>Delete</th>
                         </tr>
                         <tr v-for="(each, index) in this.products" :key="each">
-                            <th scope="row">{{ index }}</th>
+                            <th scope="row">{{ each.pid }}</th>
                             <td>{{ each.pname }}</td>
                             <td>{{ each.pcat }}</td>
                             <td>{{ each.pdesc }}</td>
@@ -36,7 +39,7 @@
                             <td>{{ each.prod_date }}</td>
                             <td>{{ each.expiry_date }}</td>
                             <td><button type="btn btn-success" @click="editProduct(each)">Edit</button></td>
-                            <td><button type="btn btn-success" @click="deleteProduct(each)">Delete</button></td>
+                            <td><button type="btn btn-success" @click="removeProduct(each)">Delete</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -73,11 +76,13 @@ export default {
             console.log(this.modalData);
         },
         editProduct(details) {
-            console.log(details)
+            localStorage.setItem("editProductDetails", JSON.stringify(details));
+            this.$router.push('/editProduct');
         },
-        async deleteProduct(details) {
+        async removeProduct(details) {
             console.log(details)
             await this.deleteProduct(details);
+            location.reload();
         }
     }
 }

@@ -1,5 +1,7 @@
 from flask import Blueprint, jsonify, request
 from classes import db, Products
+# from test import db, Products
+from datetime import datetime
 
 products_bp = Blueprint('products_bp', __name__)
 
@@ -60,38 +62,8 @@ def create_product():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-# @appointment_bp.route('/update_appointment', methods=['PUT'])
-# def update_appointment():
-#     try:
-#         data = request.get_json()
-#         school = data.get('school')
-#         old_appointment = data.get('oldAppointment')
-#         new_appointment = data.get('newAppointment')
-#         new_rank_group = data.get('newRankGroup')
-        
-#         if not data or not school or not old_appointment or not new_appointment:
-#             return jsonify({"code": 400, "message": "Invalid data"}), 400
-        
-#         appointment_name = Appointment.query.filter_by(school_name=school, appointment_name=old_appointment).first()
-#         if not appointment_name:
-#             return jsonify({ "code": 404, "message": "Appointment name not found"}), 404
-
-#         setattr(appointment_name, 'rank_group', new_rank_group)
-#         setattr(appointment_name, 'appointment_name', new_appointment)
-
-#         ClinicianSchoolAppointments = ClinicianSchoolAppointment.query.filter_by(school_name=school, appointment_name=old_appointment).all()
-#         for each in ClinicianSchoolAppointments:
-#             setattr(each, 'appointment_name', new_appointment)
-
-#         db.session.commit()
-#         return jsonify({"code": 200, "message": f"Appointment name updated successfully from {old_appointment} to {new_appointment}"}), 200
-
-
-#     except Exception as e:
-#         return jsonify({'error': str(e)}), 500        
-
-@products_bp.route('/delete_product', methods=['DELETE'])
-def delete_product():
+@products_bp.route('/update_product', methods=['PUT'])
+def update_product():
     try:
         data = request.get_json()
         pid = data.get('pid')
@@ -99,8 +71,41 @@ def delete_product():
         pname = data.get('pname')
         pprice = data.get('pprice')
         pstock = data.get('stock')
+
+        pdesc = data.get('pdesc')
+        img_src = data.get('img_src')
+        prod_date = data.get('prod_date')
+        expiry_date = data.get('expiry_date')
         
-        if not data or not pcat or not pname or not pprice or not pstock: 
+        if not data or not pid or not pcat or not pname or not pprice or not pstock:
+            return jsonify({"code": 400, "message": "Invalid data"}), 400
+        
+        product = Products.query.filter_by(pid=pid).first()
+        if not product:
+            return jsonify({ "code": 404, "message": "Product not found"}), 404
+
+        setattr(product, 'pcat', pcat)
+        setattr(product, 'pname', pname)
+        setattr(product, 'pprice', pprice)
+        setattr(product, 'stock', pstock)
+        setattr(product, 'pdesc', pdesc)
+        setattr(product, 'img_src', img_src)
+        setattr(product, 'prod_date', prod_date)
+        setattr(product, 'expiry_date', expiry_date)
+
+        db.session.commit()
+        return jsonify({"code": 200, "message": "Product upated successfully."}), 200
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500        
+
+@products_bp.route('/delete_product', methods=['DELETE'])
+def delete_product():
+    try:
+        data = request.get_json()
+        pid = data.get('pid')
+        
+        if not data or not pid: 
             return jsonify({"code": 400, "message": "Invalid data"}), 400
         
         product = Products.query.filter_by(pid=pid).first()

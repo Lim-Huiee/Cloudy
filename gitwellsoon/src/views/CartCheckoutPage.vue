@@ -33,19 +33,6 @@
                                     <div class="col-12 mb-3">
                                         <label for="street_address">Address <span>*</span></label>
                                         <input type="text" class="form-control mb-3" id="street_address" value="">
-                                        <input type="text" class="form-control" id="street_address2" value="">
-                                    </div>
-                                    <div class="col-12 mb-3">
-                                        <label for="postcode">Postcode <span>*</span></label>
-                                        <input type="text" class="form-control" id="postcode" value="">
-                                    </div>
-                                    <div class="col-12 mb-3">
-                                        <label for="city">Town/City <span>*</span></label>
-                                        <input type="text" class="form-control" id="city" value="">
-                                    </div>
-                                    <div class="col-12 mb-3">
-                                        <label for="state">Province <span>*</span></label>
-                                        <input type="text" class="form-control" id="state" value="">
                                     </div>
                                     <div class="col-12 mb-3">
                                         <label for="phone_number">Phone No <span>*</span></label>
@@ -71,7 +58,7 @@
                             <ul class="order-details-form mb-4">
                                 <li class="bg-info px-3"><span><strong>Product</strong></span> <span><strong>Total</strong></span></li>
                                 <li v-for="oneItem in cart_item" class="px-3">
-                                    <span>{{oneItem.productName}}</span> <span>${{oneItem.total_item_price}}</span>
+                                    <span>{{oneItem.pname}}</span> <span>${{oneItem.total_item_price}}</span>
                                 </li>
                                 <li class="bg-info px-3"><span>Subtotal</span> <span>${{total_price}}</span></li>
                                 <li class="bg-info px-3"><span>Shipping</span> <span>${{shippingMethod}}</span></li>
@@ -80,14 +67,6 @@
 
 
                             <div id="accordion" role="tablist" class="mb-4">
-                                <div class="card">
-                                    <div class="card-header" role="tab" id="headingTwo">
-                                        <h6 class="mb-0">
-                                            <input type="radio" id="cd" name="payment" value="cd">
-                                            <label for="cd" class="ms-3">Cash on Delivery</label><br>
-                                        </h6>
-                                    </div>
-                                </div>
                                 <div class="card">
                                     <div class="card-header" role="tab" id="headingThree">
                                         <h6 class="mb-0">
@@ -115,6 +94,7 @@
 </template>
 <script>
 import axios from "axios";
+import { mapActions, mapGetters, mapMutations } from "vuex";
 
 export default {
     name: "CartPage",
@@ -125,7 +105,12 @@ export default {
             cart_item: [],
             total_price: 0,
             shippingMethod: 0,
-            final_price: 0
+            final_price: 0,
+
+            userEmail: "",
+
+            emailTriggerSuccessCode: 0 
+
         }
     },
     async mounted() {
@@ -134,32 +119,80 @@ export default {
         this.total_price = JSON.parse(localStorage.getItem("subtotal"));
         this.shippingMethod = JSON.parse(localStorage.getItem("shipping"));
         this.final_price = JSON.parse(localStorage.getItem("finaltotal"));
+
+        this.userEmail = localStorage.getItem("email");
     },
     computed: {
     },
     methods: {
+        ...mapActions(['createOrder']),
         sendPage(pid) {
             localStorage.setItem("selectedItem", pid);
         },
         tabulateFinalPrice() {
             this.final_price = this.total_price + this.shippingMethod;
         },
-        callTriggerPayment() {
-            // TriggerPayment
-            axios.get("https://uxgheebrgoi7mbz26szg7c6ffe0zpzyg.lambda-url.ap-southeast-1.on.aws/")
-            .then(response =>{
-                console.log(response)
+        async callTriggerPayment() {
+            //create orders in db
+            console.log(this.cart_item);
+ 
+            for (let i = 0; i < this.cart_item.length; i++) {
+                var oneItem = this.cart_item[i]
+                let orderRes = await this.createOrder({'pid': oneItem.pid, 'email': this.userEmail, 'quantity': oneItem.qty, 'status': 'new'});
+                console.log(orderRes)
+            }
+            
+
+
+
+
+            // ================ TriggerPayment Lambda ================
+            const response = fetch('https://uxgheebrgoi7mbz26szg7c6ffe0zpzyg.lambda-url.ap-southeast-1.on.aws/')
+            .then((response) => response.json()) 
+            .then(data => {
+                console.log(data);
+                if (data['statusCode'] == 200) {
+                    console.log(this.paymentSuccessCode)
+                    var bodyJSON = JSON.stringify({
+                                    userEmail: this.userEmail,
+                                    emailSubject: "Git Well Soon Purchase",
+                                    emailBody: "Purchase was successful!"
+
+                                })
+                    // ================ TriggerSendEmail Lambda ================
+                    const response = fetch('https://gtsfb76in9.execute-api.ap-southeast-1.amazonaws.com/beta', {
+                        method: "POST",
+                        body: bodyJSON,
+                        headers: {
+                            "Content-type": "application/json"
+                        }
+                    })
+                    .then((response) => response.json()) 
+                    .then(data => {
+                        console.log(data);
+                        this.emailTriggerSuccessCode = data.statusCode;
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        
+                    })
+    
+                    if (this.emailTriggerSuccessCode == 200) {
+                        this.$router.push('/paymentSuccess');
+                    } else {
+                        console.log("Please try again!");
+                        alert("Please Verify Your Email!");
+                    }
+                }
             })
-            .catch(error => alert(error))
-            // const response = fetch('https://uxgheebrgoi7mbz26szg7c6ffe0zpzyg.lambda-url.ap-southeast-1.on.aws/')
-            // .then((response) => response.json()) 
-            // .then(data => {
-            //     console.log(data);
-            //     return data.statusCode;
-            // })
-            // .catch(error => {
-            //     console.log(error);
-            // })
+            .catch(error => {
+                console.log(error);
+                
+            })
+
+            if (this.emailTriggerSuccessCode==200) {
+
+            }
         },
         // TriggerPayment
         // https://uxgheebrgoi7mbz26szg7c6ffe0zpzyg.lambda-url.ap-southeast-1.on.aws/

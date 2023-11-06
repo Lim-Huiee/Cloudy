@@ -23,6 +23,12 @@ import Register from '../views/Register.vue'
 
 import navBar from "../components/pageNavBar.vue"
 
+const express=require('express');
+const app=express();
+const path = require('path');
+const PORT=3200;
+const AWS = require('aws-sdk');
+
 const routes = [
   {
     path: "/",

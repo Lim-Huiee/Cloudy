@@ -113,8 +113,9 @@
 
     </div>
 </template>
-
 <script>
+import axios from "axios";
+
 export default {
     name: "CartPage",
     components: {
@@ -145,15 +146,20 @@ export default {
         },
         callTriggerPayment() {
             // TriggerPayment
-            const response = fetch('https://uxgheebrgoi7mbz26szg7c6ffe0zpzyg.lambda-url.ap-southeast-1.on.aws/')
-            .then((response) => response.json()) 
-            .then(data => {
-                console.log(data);
-                return data.statusCode;
+            axios.get("https://uxgheebrgoi7mbz26szg7c6ffe0zpzyg.lambda-url.ap-southeast-1.on.aws/")
+            .then(response =>{
+                console.log(response)
             })
-            .catch(error => {
-                console.log(error);
-            })
+            .catch(error => alert(error))
+            // const response = fetch('https://uxgheebrgoi7mbz26szg7c6ffe0zpzyg.lambda-url.ap-southeast-1.on.aws/')
+            // .then((response) => response.json()) 
+            // .then(data => {
+            //     console.log(data);
+            //     return data.statusCode;
+            // })
+            // .catch(error => {
+            //     console.log(error);
+            // })
         },
         // TriggerPayment
         // https://uxgheebrgoi7mbz26szg7c6ffe0zpzyg.lambda-url.ap-southeast-1.on.aws/

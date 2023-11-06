@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-lg-5 mt-5">
                         <div class="card mb-3">
-                            <img class="card-img img-fluid" :src="'../../public/Product Data/' + selected_item.img_src" alt="Card image cap" id="product-detail">
+                            <img class="card-img img-fluid" :src="selected_item_image" alt="Error loading Image" id="product-detail">
                         </div>
                     </div>
                     <!-- col end -->
@@ -75,12 +75,13 @@ export default {
     data(){
         return {
             selected_item: [],
-            qty: 1
+            qty: 1,
+            selected_item_image: ""
         }
     },
     async mounted() {
         this.selected_item = JSON.parse(localStorage.getItem("selectedItem"));
-
+        this.selected_item_image = JSON.parse(localStorage.getItem("selectedItemImg"))
     },
     computed: {
     },

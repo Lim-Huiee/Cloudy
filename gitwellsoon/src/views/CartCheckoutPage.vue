@@ -146,7 +146,7 @@ export default {
 
 
 
-            // TriggerPayment
+            // ================ TriggerPayment Lambda ================
             const response = fetch('https://uxgheebrgoi7mbz26szg7c6ffe0zpzyg.lambda-url.ap-southeast-1.on.aws/')
             .then((response) => response.json()) 
             .then(data => {
@@ -157,9 +157,10 @@ export default {
                                     userEmail: this.userEmail,
                                     emailSubject: "Git Well Soon Purchase",
                                     emailBody: "Purchase was successful!"
+
                                 })
-    
-                    const response = fetch('https://h54bsx4ar5iywpwfe5endxgj4m0bgubt.lambda-url.ap-southeast-1.on.aws/', {
+                    // ================ TriggerSendEmail Lambda ================
+                    const response = fetch('https://gtsfb76in9.execute-api.ap-southeast-1.amazonaws.com/beta', {
                         method: "POST",
                         body: bodyJSON,
                         headers: {
@@ -173,17 +174,20 @@ export default {
                     })
                     .catch(error => {
                         console.log(error);
+                        
                     })
     
                     if (this.emailTriggerSuccessCode == 200) {
                         this.$router.push('/paymentSuccess');
                     } else {
                         console.log("Please try again!");
+                        alert("Please Verify Your Email!");
                     }
                 }
             })
             .catch(error => {
                 console.log(error);
+                
             })
 
             if (this.emailTriggerSuccessCode==200) {

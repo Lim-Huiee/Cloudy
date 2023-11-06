@@ -94,12 +94,11 @@ export default {
             console.log(res);
             try {
                 if (res.code == 200) {
-                    //trigger Email
                     var bodyJSON = JSON.stringify({
                         email: this.userEmail
                     })
-        
-                    const response = fetch('https://t5koenoe6ciiufp4cimt34cng40imejk.lambda-url.ap-southeast-1.on.aws/', {
+                    // ================ TriggerRegisterEmail Lambda ================
+                    const response = fetch('https://wp73m3f9b5.execute-api.ap-southeast-1.amazonaws.com/beta/', {
                         method: "POST",
                         body: bodyJSON,
                         headers: {

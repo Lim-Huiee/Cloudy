@@ -92,8 +92,8 @@
 
     </div>
 </template>
-
 <script>
+import axios from "axios";
 import { mapActions, mapGetters, mapMutations } from "vuex";
 
 export default {
@@ -109,7 +109,10 @@ export default {
 
             userEmail: "",
 
-            emailTriggerSuccessCode: 0 
+            emailTriggerSuccessCode: 0,
+            emailOuptut: "",
+
+            orderID: ""
 
         }
     },
@@ -135,17 +138,19 @@ export default {
         async callTriggerPayment() {
             //create orders in db
             console.log(this.cart_item);
- 
+
             for (let i = 0; i < this.cart_item.length; i++) {
                 var oneItem = this.cart_item[i]
                 let orderRes = await this.createOrder({'pid': oneItem.pid, 'email': this.userEmail, 'quantity': oneItem.qty, 'status': 'new'});
                 console.log(orderRes)
+                this.orderID += orderRes.order_id + ", ";
+                var totalPrice = oneItem.total_item_price
+                var quantity = oneItem.qty
+                var name = oneItem.pname
+
+                this.emailOuptut += name + "      " + quantity + "     $" + totalPrice + "\n"
             }
             
-
-
-
-
             // ================ TriggerPayment Lambda ================
             const response = fetch('https://uxgheebrgoi7mbz26szg7c6ffe0zpzyg.lambda-url.ap-southeast-1.on.aws/')
             .then((response) => response.json()) 
@@ -155,9 +160,8 @@ export default {
                     console.log(this.paymentSuccessCode)
                     var bodyJSON = JSON.stringify({
                                     userEmail: this.userEmail,
-                                    emailSubject: "Git Well Soon Purchase",
-                                    emailBody: "Purchase was successful!"
-
+                                    emailSubject: "Git Well Soon Purchase" ,
+                                    emailBody: "Hi! \n\nYour purchase was successful!\n\n" + "Your order ID:" + this.orderID + "\n\n" + this.emailOuptut
                                 })
                     // ================ TriggerSendEmail Lambda ================
                     const response = fetch('https://gtsfb76in9.execute-api.ap-southeast-1.amazonaws.com/beta', {
@@ -170,19 +174,18 @@ export default {
                     .then((response) => response.json()) 
                     .then(data => {
                         console.log(data);
-                        this.emailTriggerSuccessCode = data.statusCode;
+                        if (data.statusCode == 200) {
+                            this.$router.push('/paymentSuccess');
+                        } else {
+                            console.log("Please try again!");
+                            alert("Please Verify Your Email!");
+                        }
                     })
                     .catch(error => {
                         console.log(error);
                         
                     })
     
-                    if (this.emailTriggerSuccessCode == 200) {
-                        this.$router.push('/paymentSuccess');
-                    } else {
-                        console.log("Please try again!");
-                        alert("Please Verify Your Email!");
-                    }
                 }
             })
             .catch(error => {
@@ -194,14 +197,6 @@ export default {
 
             }
         },
-        // TriggerPayment
-        // https://uxgheebrgoi7mbz26szg7c6ffe0zpzyg.lambda-url.ap-southeast-1.on.aws/
-
-        // TriggerRegisterEmail
-        // https://t5koenoe6ciiufp4cimt34cng40imejk.lambda-url.ap-southeast-1.on.aws/ 
-
-        // TriggerSendEmail
-        // https://h54bsx4ar5iywpwfe5endxgj4m0bgubt.lambda-url.ap-southeast-1.on.aws/
     },
 }
 </script>

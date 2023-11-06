@@ -45,7 +45,10 @@ def create_order():
         db.session.add(new_order)
         db.session.commit()
 
-        return jsonify({"code": 201, "order_created": "Successfully created orders"}), 201
+        #retrieve orderID
+        order = Orders.query.filter_by(email=email, pid=pid, quantity=quantity, status=status).order_by(Orders.oid.desc()).first()
+
+        return jsonify({"code": 201, "order_id": f'{order.oid}'}), 201
     
     except Exception as e:
         return jsonify({'error': str(e)}), 500

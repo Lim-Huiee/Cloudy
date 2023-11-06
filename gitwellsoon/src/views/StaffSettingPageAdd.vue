@@ -130,6 +130,33 @@ export default {
         async addProduct(){
             console.log(this.formFields);
             await this.createProduct(this.formFields);
+            
+            const img_src = String(this.formFields.pcat).replaceAll(' ', '') + '_' + String(this.formFields.pname).replaceAll(' ', '') + '.png';
+            console.log(img_src)
+
+            // Prepare the data to send to the API
+            const data = {
+                pcat: this.formFields.pcat,
+                pname: this.formFields.pname,
+                pdesc: this.formFields.pdesc,
+                pprice: this.formFields.pprice,
+                stock: this.formFields.stock,
+                prod_date: this.formFields.prod_date,
+                expiry_date: this.formFields.expiry_date,
+                img_src: img_src
+            };
+
+            // Make an HTTP POST request to your API
+            try {
+                const response = await Axios.post('http://localhost:5000/create_product', data);
+                console.log(response.data);
+                // Handle the response, e.g., show a success message or redirect
+            } catch (error) {
+                console.error('Error creating product:', error);
+                // Handle the error, e.g., show an error message
+            }
+
+
 
             this.$router.push('/StaffLandingPage');
 
@@ -153,32 +180,6 @@ export default {
             console.error('Error uploading file:', error);
             }
             }   
-        },
-        async addProduct() {
-            console.log(this.formFields);
-            
-
-            // Prepare the data to send to the API
-            const data = {
-                pcat: this.formFields.pcat,
-                pname: this.formFields.pname,
-                pdesc: this.formFields.pdesc,
-                pprice: this.formFields.pprice,
-                stock: this.formFields.stock,
-                prod_date: this.formFields.prod_date,
-                expiry_date: this.formFields.expiry_date,
-                img_src: img_src
-            };
-
-            // Make an HTTP POST request to your API
-            try {
-                const response = await Axios.post('http://localhost:5000/create_product', data);
-                console.log(response.data);
-                // Handle the response, e.g., show a success message or redirect
-            } catch (error) {
-                console.error('Error creating product:', error);
-                // Handle the error, e.g., show an error message
-            }
-        },
+        }
 }
 </script>

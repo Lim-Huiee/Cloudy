@@ -95,7 +95,7 @@ import { mapActions, mapGetters, mapMutations } from "vuex";
 // const express=require('express');
 // const app=express();
 // const PORT=3200;
-const AWS = require('aws-sdk');
+import AWS from './aws-config.js';
 
 
 export default {
@@ -247,10 +247,6 @@ export default {
             }
         },
         async getImageFromS3(imageKey){
-            AWS.config.update({
-                accessKeyId: "",
-                secretAccessKey: "",
-            });
 
             const s3 = new AWS.S3();
 

@@ -18,7 +18,7 @@ CORS(app)
 # ) as tunnel:
 #     print("****SSH Tunnel Established****")
 tunnel = SSHTunnelForwarder(
-    ('ec2-18-142-239-91.ap-southeast-1.compute.amazonaws.com', 22),
+    ('ec2-13-213-40-123.ap-southeast-1.compute.amazonaws.com', 22),
     ssh_username="ec2-user",
     ssh_password="",
     ssh_pkey="gitwellsoon-is458.pem",
@@ -176,8 +176,12 @@ def create_product():
         data = request.get_json()
         pcat = data.get('pcat')
         pname = data.get('pname')
+        pdesc = data.get('pdesc')
         pprice = data.get('pprice')
         pstock = data.get('stock')
+        prod_date = data.get('prod_date')
+        expiry_date = data.get('expiry_date')
+        img_src = data.get('img_src')
 
         if not data or not pcat or not pname or not pprice or not pstock: 
             return jsonify({"code": 400, "message": "Invalid data"}), 400

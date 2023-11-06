@@ -5,7 +5,7 @@
                 Add New Product
             </h1>
 
-            <form class="container">
+            <form class="container" @submit.prevent="submitForm">
                 <div class="row input-field mt-2">
                     <label for="pcat">Product Category:</label>
 
@@ -45,13 +45,6 @@
                 </div>
 
                 <div class="row input-field mt-2">
-                    <label for="img_src" class="col-form-label col-sm-2 required">Product Image</label>
-                    <div class="col-sm-6">
-                        <input v-model="formFields.img_src" type="text" class="form-control" id="img_src" required>
-                    </div>
-                </div>
-
-                <div class="row input-field mt-2">
                     <label for="stock" class="col-form-label col-sm-2 required">Product Stock</label>
                     <div class="col-sm-6">
                         <input v-model="formFields.stock" type="number" class="form-control" id="stock" required>
@@ -71,6 +64,12 @@
                         <input v-model="formFields.expiry_date" type="text" class="form-control" id="expiry_date" placeholder="YYYY-MM-DD" required>
                     </div>
                 </div>
+                <div class="row input-field mt-2">
+                    <label for="img_src" class="col-form-label col-sm-2 required">Product Image</label>
+                    <div class="col-sm-6">
+                        <input type="file" class="form-control" id="img_src" required @change="handleFileChange">
+                    </div>
+                </div>
             </form>
 
             <div class="container">
@@ -88,7 +87,9 @@
     </div>
 </template>
 <script>
+import AWS from './aws-config.js';
 import { mapActions, mapMutations, mapGetters } from "vuex";
+import Axios from 'axios'; 
 
 export default {
     name: "Add",
@@ -132,7 +133,52 @@ export default {
 
             this.$router.push('/StaffLandingPage');
 
-        }
-    },
+        },
+        async handleFileChange(event) {
+            this.addProduct();
+            const file = event.target.files[0]; // Get the selected file
+            const s3 = new AWS.S3(); // Create an S3 instance
+
+            const params = {
+            Bucket: 'gitwellsoon-product', // Replace with your S3 bucket name
+            Key: this.formFields['pcat'].replaceAll(' ','') + '_' + this.formFields['pname'].replaceAll(' ','') + '.png' , // Provide a unique key for your object
+            Body: file,
+            };
+
+            try {
+            const data = await s3.upload(params).promise();
+            console.log('File uploaded successfully:', data.Location);
+            // You can handle the response, e.g., save the S3 URL to your database
+            } catch (error) {
+            console.error('Error uploading file:', error);
+            }
+            }   
+        },
+        async addProduct() {
+            console.log(this.formFields);
+            
+
+            // Prepare the data to send to the API
+            const data = {
+                pcat: this.formFields.pcat,
+                pname: this.formFields.pname,
+                pdesc: this.formFields.pdesc,
+                pprice: this.formFields.pprice,
+                stock: this.formFields.stock,
+                prod_date: this.formFields.prod_date,
+                expiry_date: this.formFields.expiry_date,
+                img_src: img_src
+            };
+
+            // Make an HTTP POST request to your API
+            try {
+                const response = await Axios.post('http://localhost:5000/create_product', data);
+                console.log(response.data);
+                // Handle the response, e.g., show a success message or redirect
+            } catch (error) {
+                console.error('Error creating product:', error);
+                // Handle the error, e.g., show an error message
+            }
+        },
 }
 </script>

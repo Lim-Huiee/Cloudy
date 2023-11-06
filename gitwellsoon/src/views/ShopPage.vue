@@ -232,7 +232,19 @@ export default {
         },
         sendPage(oneList) {
             localStorage.setItem("selectedItem", JSON.stringify(oneList));
-            localStorage.setItem("selectedItemImg", JSON.stringify(this.itemImages[oneList.img_src]));
+            console.log(this.itemImages);
+            Object.values(this.itemImages)
+            var count = 0
+            const isNullish = Object.values(this.itemImages).every(value => {
+                if (value === null) {
+                    count += 1
+                }
+                return false;
+            });
+
+            if (isNullish == this.itemImages.length) {
+                localStorage.setItem("selectedItemImg", JSON.stringify(this.itemImages[oneList.img_src]));
+            }
         },
         async getImageFromS3(imageKey){
             AWS.config.update({

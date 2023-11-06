@@ -81,7 +81,10 @@ export default {
     },
     async mounted() {
         this.selected_item = JSON.parse(localStorage.getItem("selectedItem"));
-        this.selected_item_image = JSON.parse(localStorage.getItem("selectedItemImg"))
+
+        if (JSON.parse(localStorage.getItem("selectedItemImg"))) {
+            this.selected_item_image = JSON.parse(localStorage.getItem("selectedItemImg"));
+        }
     },
     computed: {
     },

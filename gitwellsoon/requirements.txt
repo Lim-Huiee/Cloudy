@@ -1,0 +1,6 @@
+sshtunnel==0.4.0
+Flask==2.3.2
+Flask-Cors==4.0.0
+Flask-SQLAlchemy==3.0.5
+Flask-Testing==0.8.1
+Flask-JWT-Extended==4.5.2

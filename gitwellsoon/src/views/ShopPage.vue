@@ -231,20 +231,23 @@ export default {
             console.log(this.selected_list);
         },
         sendPage(oneList) {
+            localStorage.setItem("selectedItemImg", JSON.stringify(""));
             localStorage.setItem("selectedItem", JSON.stringify(oneList));
-            console.log(this.itemImages);
-            Object.values(this.itemImages)
-            var count = 0
+            // console.log(this.itemImages);
+            // Object.values(this.itemImages)
+            // var count = 0
             const isNullish = Object.values(this.itemImages).every(value => {
                 if (value === null) {
                     count += 1
                 }
                 return false;
             });
-
-            if (isNullish == this.itemImages.length) {
-                localStorage.setItem("selectedItemImg", JSON.stringify(this.itemImages[oneList.img_src]));
+            if (this.itemImages[oneList.img_src] !== undefined) {
+                if ( this.itemImages[oneList.img_src].length > 0) {
+                    localStorage.setItem("selectedItemImg", JSON.stringify(this.itemImages[oneList.img_src]));
+                }
             }
+            
         },
         async getImageFromS3(imageKey){
 

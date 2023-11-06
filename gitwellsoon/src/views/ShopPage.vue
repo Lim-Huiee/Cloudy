@@ -33,8 +33,8 @@
                         </a>
                         <ul class="list-unstyled pl-3" >
                             <li><a class="text-decoration-none" href="#" @click="changeView('Bandage')">Bandage</a></li>
-                            <li><a class="text-decoration-none" href="#" @click="changeView('Blood Pressure Monitor')">Face Mask</a></li>
-                            <li><a class="text-decoration-none" href="#" @click="changeView('Face Mask')">First Aid Kit</a></li>
+                            <li><a class="text-decoration-none" href="#" @click="changeView('Face Mask')">Face Mask</a></li>
+                            <li><a class="text-decoration-none" href="#" @click="changeView('First Aid Kit')">First Aid Kit</a></li>
                             <li><a class="text-decoration-none" href="#" @click="changeView('Gloves')">Gloves</a></li>
                             <li><a class="text-decoration-none" href="#" @click="changeView('Hand Sanitizer')">Hand Sanitizer</a></li>
                             <li><a class="text-decoration-none" href="#" @click="changeView('Support')">Supporting guards</a></li>

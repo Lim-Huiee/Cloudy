@@ -128,10 +128,8 @@ export default {
 
         },
         async addProduct(){
-            console.log(this.formFields);
-            await this.createProduct(this.formFields);
-            
-            const img_src = String(this.formFields.pcat).replaceAll(' ', '') + '_' + String(this.formFields.pname).replaceAll(' ', '') + '.png';
+
+            const img_src = String(this.formFields.pcat).replaceAll(' ', '') + '_' + String(this.formFields.pname).replaceAll(' ', '') + '.jpeg';
             console.log(img_src)
 
             // Prepare the data to send to the API
@@ -168,7 +166,7 @@ export default {
 
             const params = {
             Bucket: 'gitwellsoon-product', // Replace with your S3 bucket name
-            Key: this.formFields['pcat'].replaceAll(' ','') + '_' + this.formFields['pname'].replaceAll(' ','') + '.png' , // Provide a unique key for your object
+            Key: this.formFields['pcat'].replaceAll(' ','') + '_' + this.formFields['pname'].replaceAll(' ','') + '.jpeg' , // Provide a unique key for your object
             Body: file,
             };
 

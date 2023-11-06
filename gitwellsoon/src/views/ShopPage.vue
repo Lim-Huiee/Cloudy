@@ -228,8 +228,8 @@ export default {
         },
         async getImageFromS3(imageKey){
             AWS.config.update({
-                accessKeyId: "AKIAUU3QCWRZSBLSCGPK",
-                secretAccessKey: "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",
+                accessKeyId: "AKIAUU3QCWRZ33LPHHHD",
+                secretAccessKey: "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",
             });
 
             const s3 = new AWS.S3();

@@ -10,20 +10,20 @@
                 <ul class="list-unstyled templatemo-accordion">
                     <li class="pb-3">
                         <a class="d-flex justify-content-between h3 text-decoration-none" href="#">
-                            <h3>Monitoring</h3>
-                        </a>
-                        <ul class="show list-unstyled pl-3">
-                            <li><a class="text-decoration-none" href="#" @click="changeView('Blood Pressure Monitor')">Blood Pressure Monitor</a></li>
-                            <li><a class="text-decoration-none" href="#" @click="changeView('Ventilator')">Ventilators</a></li>
-                        </ul>
-                    </li>
-                    <li class="pb-3">
-                        <a class="d-flex justify-content-between h3 text-decoration-none" href="#">
                             <h3>Medical Equipments</h3>
                         </a>
                         <ul class="list-unstyled pl-3">
                             <li><a class="text-decoration-none" href="#" @click="changeView('Wheelchair')">Wheelchairs</a></li>
                             <li><a class="text-decoration-none" href="#" @click="changeView('IV drips')">IV Drips</a></li>
+                        </ul>
+                    </li>
+                    <li class="pb-3">
+                        <a class="d-flex justify-content-between h3 text-decoration-none" href="#">
+                            <h3>Monitoring</h3>
+                        </a>
+                        <ul class="show list-unstyled pl-3">
+                            <li><a class="text-decoration-none" href="#" @click="changeView('Blood Pressure Monitor')">Blood Pressure Monitor</a></li>
+                            <li><a class="text-decoration-none" href="#" @click="changeView('Ventilator')">Ventilators</a></li>
                         </ul>
                     </li>
 
@@ -48,7 +48,7 @@
                     <div class="col-md-4" v-for="OneListing in selected_list">
                         <div class="card mb-4 product-wap rounded-0">
                             <div class="card rounded-0">
-                                <img class="card-img rounded-0 img-fluid" :src="'../../public/Product Data/' + OneListing.img_src">
+                                <img class="card-img rounded-0 img-fluid" :src="this.itemImages[OneListing.img_src]">
                                 <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
                                         <li><router-link to="/shopProduct" class="btn btn-success text-white mt-2" @click="sendPage(OneListing)"><i class="bi bi-eye"></i></router-link></li>
@@ -84,8 +84,6 @@
 
         </div>
     </div>
-
-    <img class="card-img rounded-0 img-fluid" :src=selectedItemImage alt="Product Image">
     <!-- End Content -->
 
     </div>
@@ -200,6 +198,7 @@ export default {
             },
             selected_list:[],
             selectedItemImage: "",
+            itemImages: {}
         }
     },
     async mounted() {
@@ -210,9 +209,17 @@ export default {
         await this.getAllProducts();
         console.log(this.products);
 
-        this.selected_list = this.products.filter(record => record.pcat == 'Blood Pressure Monitor');
+        this.selected_list = this.products.filter(record => record.pcat == 'Wheelchair');
 
         console.log(this.getImageFromS3('bandage1.jpeg'))
+
+        for (let i = 0; i < this.products.length; i++) {
+            var image = this.products[i].img_src
+
+            this.itemImages[image] = await this.getImageFromS3(image)
+            setTimeout(1000)
+        }
+        console.log(this.itemImages)
     },
     computed: {
         ...mapGetters(['products'])
@@ -225,11 +232,24 @@ export default {
         },
         sendPage(oneList) {
             localStorage.setItem("selectedItem", JSON.stringify(oneList));
+            console.log(this.itemImages);
+            Object.values(this.itemImages)
+            var count = 0
+            const isNullish = Object.values(this.itemImages).every(value => {
+                if (value === null) {
+                    count += 1
+                }
+                return false;
+            });
+
+            if (isNullish == this.itemImages.length) {
+                localStorage.setItem("selectedItemImg", JSON.stringify(this.itemImages[oneList.img_src]));
+            }
         },
         async getImageFromS3(imageKey){
             AWS.config.update({
-                accessKeyId: "AKIAUU3QCWRZSBLSCGPK",
-                secretAccessKey: "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",
+                accessKeyId: "",
+                secretAccessKey: "",
             });
 
             const s3 = new AWS.S3();
@@ -237,13 +257,13 @@ export default {
             try {
                 const data = await s3.getObject({
                 Bucket: 'gitwellsoon-product',
-                Key: "bandage1.jpeg", // You should pass the actual image key
+                Key: imageKey, // You should pass the actual image key
                 }).promise();
 
                 // Encode the image and set it in your Vue data
                 const image = "data:image/jpeg;base64," + this.encode(data.Body);
-                this.$data.selectedItemImage = image;
-                console.log(this.$data.selectedItemImage)
+                
+                return image
             } catch (error) {
                 console.error('Error fetching image from S3:', error);
             }

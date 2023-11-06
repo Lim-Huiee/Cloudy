@@ -84,6 +84,8 @@
 
         </div>
     </div>
+
+    <img class="card-img rounded-0 img-fluid" :src=selectedItemImage alt="Product Image">
     <!-- End Content -->
 
     </div>
@@ -92,6 +94,11 @@
 <script>
 import { defineComponent } from 'vue';
 import { mapActions, mapGetters, mapMutations } from "vuex";
+// const express=require('express');
+// const app=express();
+// const PORT=3200;
+const AWS = require('aws-sdk');
+
 
 export default {
     name: "ShopPage",
@@ -191,7 +198,8 @@ export default {
                         price: '3.00'
                     }]
             },
-            selected_list:[]
+            selected_list:[],
+            selectedItemImage: "",
         }
     },
     async mounted() {
@@ -203,6 +211,8 @@ export default {
         console.log(this.products);
 
         this.selected_list = this.products.filter(record => record.pcat == 'Blood Pressure Monitor');
+
+        console.log(this.getImageFromS3('bandage1.jpeg'))
     },
     computed: {
         ...mapGetters(['products'])
@@ -215,7 +225,38 @@ export default {
         },
         sendPage(oneList) {
             localStorage.setItem("selectedItem", JSON.stringify(oneList));
+        },
+        async getImageFromS3(imageKey){
+            AWS.config.update({
+                accessKeyId: "AKIAUU3QCWRZSBLSCGPK",
+                secretAccessKey: "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",
+            });
+
+            const s3 = new AWS.S3();
+
+            try {
+                const data = await s3.getObject({
+                Bucket: 'gitwellsoon-product',
+                Key: "bandage1.jpeg", // You should pass the actual image key
+                }).promise();
+
+                // Encode the image and set it in your Vue data
+                const image = "data:image/jpeg;base64," + this.encode(data.Body);
+                this.$data.selectedItemImage = image;
+                console.log(this.$data.selectedItemImage)
+            } catch (error) {
+                console.error('Error fetching image from S3:', error);
+            }
+        },
+        encode(data) {
+            const arrayBuffer = new Uint8Array(data).buffer;
+            const base64 = btoa(String.fromCharCode(...new Uint8Array(arrayBuffer)));
+            return base64;
         }
+        // encode(data) {
+        //     const buf = Buffer.from(data);
+        //     return buf.toString('base64');
+        // },
     },
 }
 </script>
